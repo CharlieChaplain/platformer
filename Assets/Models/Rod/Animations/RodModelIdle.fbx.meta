@@ -1,0 +1,180 @@
+fileFormatVersion: 2
+guid: a5b8472d57c3aa24d973f9590eb14775
+timeCreated: 1526808030
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: jnt_head
+    100002: jnt_Lelbow
+    100004: jnt_Lfoot
+    100006: jnt_Lhand
+    100008: jnt_Lhip
+    100010: jnt_Lknee
+    100012: jnt_Lshoulder
+    100014: jnt_neck
+    100016: jnt_Relbow
+    100018: jnt_Rfoot
+    100020: jnt_Rhand
+    100022: jnt_Rhip
+    100024: jnt_Rknee
+    100026: jnt_Rshoulder
+    100028: jnt_topWaist
+    100030: jnt_torso
+    100032: jnt_waist
+    100034: //RootNode
+    400000: jnt_head
+    400002: jnt_Lelbow
+    400004: jnt_Lfoot
+    400006: jnt_Lhand
+    400008: jnt_Lhip
+    400010: jnt_Lknee
+    400012: jnt_Lshoulder
+    400014: jnt_neck
+    400016: jnt_Relbow
+    400018: jnt_Rfoot
+    400020: jnt_Rhand
+    400022: jnt_Rhip
+    400024: jnt_Rknee
+    400026: jnt_Rshoulder
+    400028: jnt_topWaist
+    400030: jnt_torso
+    400032: jnt_waist
+    400034: //RootNode
+    7400000: Idle01
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle01
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 120
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: jnt_waist
+        weight: 1
+      - path: jnt_waist/jnt_Lhip
+        weight: 1
+      - path: jnt_waist/jnt_Lhip/jnt_Lknee
+        weight: 1
+      - path: jnt_waist/jnt_Lhip/jnt_Lknee/jnt_Lfoot
+        weight: 1
+      - path: jnt_waist/jnt_Rhip
+        weight: 1
+      - path: jnt_waist/jnt_Rhip/jnt_Rknee
+        weight: 1
+      - path: jnt_waist/jnt_Rhip/jnt_Rknee/jnt_Rfoot
+        weight: 1
+      - path: jnt_waist/jnt_topWaist
+        weight: 1
+      - path: jnt_waist/jnt_topWaist/jnt_torso
+        weight: 1
+      - path: jnt_waist/jnt_topWaist/jnt_torso/jnt_Lshoulder
+        weight: 1
+      - path: jnt_waist/jnt_topWaist/jnt_torso/jnt_Lshoulder/jnt_Lelbow
+        weight: 1
+      - path: jnt_waist/jnt_topWaist/jnt_torso/jnt_Lshoulder/jnt_Lelbow/jnt_Lhand
+        weight: 1
+      - path: jnt_waist/jnt_topWaist/jnt_torso/jnt_neck
+        weight: 1
+      - path: jnt_waist/jnt_topWaist/jnt_torso/jnt_neck/jnt_head
+        weight: 1
+      - path: jnt_waist/jnt_topWaist/jnt_torso/jnt_Rshoulder
+        weight: 1
+      - path: jnt_waist/jnt_topWaist/jnt_torso/jnt_Rshoulder/jnt_Relbow
+        weight: 1
+      - path: jnt_waist/jnt_topWaist/jnt_torso/jnt_Rshoulder/jnt_Relbow/jnt_Rhand
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 20
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 1
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 1
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 575658f497112d4459930c4930a9fdaf,
+    type: 3}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
