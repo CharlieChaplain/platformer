@@ -15,6 +15,8 @@ public class CameraMove : MonoBehaviour {
 	public float maxViewAngle = 45f;
 	public float minViewAngle = -45f;
 
+	private float cameracorrect = 0.5f;
+
 	// Use this for initialization
 	void Start () {
 		offset = new Vector3 (0f, -2.5f, 5f);
@@ -62,6 +64,19 @@ public class CameraMove : MonoBehaviour {
 			transform.position = new Vector3 (transform.position.x, target.position.y - 0.5f, transform.position.z);
 		}
 
+		checkGround ();
+
 		transform.LookAt (target);
+	}
+
+	//checks if the camera would be pushing through geometry on the ground layer
+	void checkGround() {
+		Vector3 between = transform.position - target.position;
+		LayerMask groundMask = LayerMask.GetMask ("Ground");
+		RaycastHit hit;
+		Debug.DrawRay (target.position, between, Color.blue);
+		if (Physics.Raycast (target.position, between, out hit, between.magnitude, groundMask)) {
+			transform.position = hit.point + (between.normalized * -cameracorrect);
+		}
 	}
 }

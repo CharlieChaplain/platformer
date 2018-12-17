@@ -6,6 +6,7 @@ public class WeaponInfo : MonoBehaviour {
 
 	public float damage;
 	public float swingTime;
+	public bool twoHand;
 
 	// Use this for initialization
 	void Start () {
