@@ -1,21 +1,50 @@
 fileFormatVersion: 2
-guid: 8ba08b8cf1cec2341bb6eeb55b481556
+guid: d2a6a8a43eae4e740977d1b4bf3361b9
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: buboes
-    100002: //RootNode
-    100004: frog
-    400000: buboes
-    400002: //RootNode
-    400004: frog
-    2100000: lambert1
-    2300000: buboes
-    2300002: frog
-    3300000: buboes
-    3300002: frog
-    4300000: buboes
-    4300002: frog
+    100000: ankleL
+    100002: ankleR
+    100004: elbowL
+    100006: elbowR
+    100008: fingiesL
+    100010: fingiesR
+    100012: //RootNode
+    100014: head
+    100016: hipL
+    100018: hipR
+    100020: kneeL
+    100022: kneeR
+    100024: neck
+    100026: root
+    100028: shoulderL
+    100030: shoulderR
+    100032: shoulders
+    100034: toesiesL
+    100036: toesiesL1
+    100038: waist
+    400000: ankleL
+    400002: ankleR
+    400004: elbowL
+    400006: elbowR
+    400008: fingiesL
+    400010: fingiesR
+    400012: //RootNode
+    400014: head
+    400016: hipL
+    400018: hipR
+    400020: kneeL
+    400022: kneeR
+    400024: neck
+    400026: root
+    400028: shoulderL
+    400030: shoulderR
+    400032: shoulders
+    400034: toesiesL
+    400036: toesiesL1
+    400038: waist
+    7400000: idle
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -43,7 +72,35 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: idle
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -67,15 +124,15 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
   importAnimation: 1
-  copyAvatar: 0
+  copyAvatar: 1
   humanDescription:
     serializedVersion: 2
     human: []
@@ -92,8 +149,9 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 6e5c8c31bcde63243adf0ff64c378046,
+    type: 3}
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
