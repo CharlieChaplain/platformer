@@ -5,14 +5,15 @@ using UnityEngine;
 public class LookAt : MonoBehaviour {
 
 	public Transform target;
-	public Transform parent;
+	public Transform joint;
 	public Vector3 rotOffset;
 	public float lookSpeed;
 	public float outerRadius;
 	public float innerRadius;
 	public float fov;
 
-	private bool takeAGander;
+	public bool takeAGander;
+	public bool canLook;
 	private Quaternion offsetQuat;
 
 	// Use this for initialization
@@ -28,25 +29,25 @@ public class LookAt : MonoBehaviour {
 
 	void LateUpdate() {
 		//last update happens after animations are resolved
-
-		float dist = Vector3.Distance (target.position, transform.position);
-		if (dist <= outerRadius && dist >= innerRadius) {
-			float angle = Vector3.Angle (parent.forward, target.position - parent.position);
-			if (angle <= fov/2) {
-				takeAGander = true;
+		if (canLook) {
+			float dist = Vector3.Distance (target.position, transform.position);
+			if (dist <= outerRadius && dist >= innerRadius) {
+				float angle = Vector3.Angle (transform.forward, target.position - transform.position);
+				if (angle <= fov / 2) {
+					takeAGander = true;
+				} else {
+					takeAGander = false;
+				}
 			} else {
 				takeAGander = false;
 			}
-		} else {
-			takeAGander = false;
-		}
 
-		if (takeAGander) {
-			Vector3 lookDir = target.position - transform.position;
-			Quaternion toRotation = Quaternion.LookRotation (lookDir) * offsetQuat;
-			transform.rotation = Quaternion.Lerp (transform.rotation, toRotation, lookSpeed * Time.deltaTime);
+			if (takeAGander) {
+				Vector3 lookDir = target.position - joint.position;
+				Quaternion toRotation = Quaternion.LookRotation (lookDir) * offsetQuat;
+				joint.rotation = Quaternion.Lerp (joint.rotation, toRotation, lookSpeed * Time.deltaTime);
+			}
 		}
-
 		//transform.rotation *= Quaternion.Euler (rotOffset.x, rotOffset.y, rotOffset.z);
 	}
 }

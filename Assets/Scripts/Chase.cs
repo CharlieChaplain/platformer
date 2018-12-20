@@ -14,7 +14,7 @@ public class Chase : MonoBehaviour {
 	public Transform target;
 	public Transform transform;
 
-	private bool doChase = true;
+	public bool doChase;
 	private Vector3 moveDirection;
 	private Vector3 moveXZ;
 
@@ -55,6 +55,14 @@ public class Chase : MonoBehaviour {
 
 		controller.Move (moveDirection * Time.deltaTime);
 
+		//if animator has speed parameter, sets it
+		if (anim.parameters.Length > 0) {
+			for (int i = 0; i < anim.parameters.Length; i++) {
+				if (anim.parameters [i].name == "speed") {
+					anim.SetFloat ("speed", Mathf.Pow(moveXZ.x + moveXZ.z, 2f));
+				}
+			}
+		}
 	}
 
 	void Move(){

@@ -128,6 +128,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4883468668954932}
   - component: {fileID: 95478002923553538}
+  - component: {fileID: 114410090320906342}
+  - component: {fileID: 114712096162051988}
+  - component: {fileID: 114582540888006304}
+  - component: {fileID: 143601944029954046}
+  - component: {fileID: 114814591936863802}
   m_Layer: 0
   m_Name: frogg
   m_TagString: Untagged
@@ -1192,6 +1197,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   freeRotation: {x: 1, y: 1, z: 1}
+--- !u!114 &114410090320906342
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1147169900904938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1d1d2ee1f4760840a32ed6ccc7b379b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  joint: {fileID: 4453646885281384}
+  rotOffset: {x: 0, y: 90, z: -43}
+  lookSpeed: 100
+  outerRadius: 12
+  innerRadius: 0.6
+  fov: 120
+  takeAGander: 0
+  canLook: 1
 --- !u!114 &114434513942546722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1204,6 +1229,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   freeRotation: {x: 1, y: 1, z: 1}
+--- !u!114 &114582540888006304
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1147169900904938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99af41e6aa01b414da0073c446227118, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 15
+  maxHealth: 15
+  enemyState: 0
 --- !u!114 &114604263519439222
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1216,6 +1255,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   freeRotation: {x: 1, y: 1, z: 1}
+--- !u!114 &114712096162051988
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1147169900904938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdbd0d6241889b54aac835cb49f3b50a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  turnSpeed: 5
+  gravMult: 0.25
+  controller: {fileID: 143601944029954046}
+  anim: {fileID: 95478002923553538}
+  target: {fileID: 0}
+  transform: {fileID: 0}
+  doChase: 0
+  knockbackTime: 0
+  enemyInfo: {fileID: 114582540888006304}
+--- !u!114 &114814591936863802
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1147169900904938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f290c5886cccd48863264d448ed895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114929509897938990
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1295,3 +1366,20 @@ SkinnedMeshRenderer:
     m_Center: {x: 0, y: 1.7662913, z: 0.42869955}
     m_Extent: {x: 3.4069672, y: 1.7844967, z: 1.052746}
   m_DirtyAABB: 0
+--- !u!143 &143601944029954046
+CharacterController:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1147169900904938}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 3.53
+  m_Radius: 1.02
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1.71, z: 0.36}
