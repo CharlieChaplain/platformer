@@ -12,7 +12,6 @@ public class Chase : MonoBehaviour {
 	public Animator anim;
 
 	public Transform target;
-	public Transform transform;
 
 	public bool doChase;
 	private Vector3 moveDirection;
@@ -27,7 +26,6 @@ public class Chase : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		controller = GetComponent<CharacterController>();
-		transform = GetComponent<Transform> ();
 		enemyInfo = GetComponent<EnemyInfo> ();
 	}
 	
@@ -49,11 +47,14 @@ public class Chase : MonoBehaviour {
 			break;
 		case EnemyInfo.EnemyState.Invincible:
 			break;
+		case EnemyInfo.EnemyState.Dead:
+			break;
 		default:
 			break;
 		}
 
-		controller.Move (moveDirection * Time.deltaTime);
+		if(enemyInfo.enemyState != EnemyInfo.EnemyState.Dead)
+			controller.Move (moveDirection * Time.deltaTime);
 
 		//if animator has speed parameter, sets it
 		if (anim.parameters.Length > 0) {

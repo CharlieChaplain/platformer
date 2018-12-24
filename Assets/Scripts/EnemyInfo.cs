@@ -6,13 +6,17 @@ public class EnemyInfo : MonoBehaviour {
 
 	public float currentHealth;
 	public float maxHealth;
+	public float attackTimer;
+
+	public Animator anim;
 
 	public enum EnemyState
 	{
-		Move,
-		Hit,
-		Attacking,
-		Invincible
+		Move = 0,
+		Hit = 1,
+		Attacking = 2,
+		Invincible = 3,
+		Dead = 4
 	};
 
 	public EnemyState enemyState;
@@ -38,10 +42,13 @@ public class EnemyInfo : MonoBehaviour {
 	}
 
 	IEnumerator Die(){
-		this.gameObject.GetComponentsInChildren<SkinnedMeshRenderer> ()[0].enabled = false;
-		this.gameObject.GetComponentsInChildren<MeshRenderer> ()[0].enabled = false;
-		this.gameObject.GetComponent<CapsuleCollider> ().enabled = false;
-		yield return new WaitForSeconds (1f);
+		enemyState = EnemyState.Dead;
+		anim.SetInteger ("State", (int)enemyState);
+		GetComponent<CharacterController> ().enabled = false;
+		if (GetComponent<LookAt> () != null)
+			GetComponent<LookAt> ().canLook = false;
+
+		yield return new WaitForSeconds (5f);
 		GameObject.Destroy (this.gameObject);
 	}
 }

@@ -32,8 +32,7 @@ public class PlayerMoveController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		ApplyGravity ();
-		if(MovementManager.Instance.canMove)
-        	Move();
+    	Move();
 	}
 
     void Move()
@@ -44,6 +43,14 @@ public class PlayerMoveController : MonoBehaviour {
 		moveDirection = (transform.forward * Input.GetAxis("Vertical")) + (transform.right * Input.GetAxis("Horizontal"));
 		moveDirection *= moveSpeed;
 		moveDirection.y = prevY;
+		//the way you're looking before canMove is factored in
+		Vector3 lookDirection = moveDirection;
+
+		//if player can't move, sets moveDirection x and z to zero
+		if (!MovementManager.Instance.canMove) {
+			moveDirection.x = 0;
+			moveDirection.z = 0;
+		}
 
 		//jumps
 		if (grounded) {
@@ -63,12 +70,12 @@ public class PlayerMoveController : MonoBehaviour {
 		if(Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
 		{
 			transform.rotation = Quaternion.Euler(0f, pivot.rotation.eulerAngles.y, 0f);
-			Quaternion newRot = Quaternion.LookRotation(new Vector3(moveDirection.x, 0f, moveDirection.z));
+			Quaternion newRot = Quaternion.LookRotation(new Vector3(lookDirection.x, 0f, lookDirection.z));
 			model.transform.rotation = Quaternion.Slerp (model.transform.rotation, newRot, step);
 		}
 
 		//put animation variable connections here
-		anim.SetFloat("Speed", (Mathf.Abs(Input.GetAxis("Vertical")) + Mathf.Abs(Input.GetAxis("Horizontal"))));
+		anim.SetFloat("Speed", (Mathf.Abs(moveDirection.x) + Mathf.Abs(moveDirection.z)));
 		anim.SetFloat ("YSpeed", controller.velocity.y);
     }
 

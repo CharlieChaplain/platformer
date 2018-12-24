@@ -20,17 +20,21 @@ public class Attack : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		currentWep = PlayerManager.Instance.currentWep;
+
 		if (state == AttackState.none) {
 			if (Input.GetAxis ("Attack") > 0) {
-				state = AttackState.thrustTwoHand;
+				state = (AttackState)currentWep.GetComponent<WeaponInfo> ().attackState;
 				PlayerManager.Instance.attacking = true;
 				attackTimer = currentWep.GetComponent<WeaponInfo> ().swingTime;
-				currentWep.SendMessage ("SetTrailTimer");
+				//currentWep.SendMessage ("SetTrailTimer");
+
+				if ((int)state == 2)
+					MovementManager.Instance.canMove = false;
 			}
 		} else {
 			attackTimer -= Time.deltaTime;
@@ -38,6 +42,7 @@ public class Attack : MonoBehaviour {
 				attackTimer = 0;
 				state = AttackState.none;
 				PlayerManager.Instance.attacking = false;
+				MovementManager.Instance.canMove = true;
 			}
 		}
 

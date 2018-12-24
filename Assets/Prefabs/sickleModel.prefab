@@ -360,3 +360,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 2
   swingTime: 0.4635
+  twoHand: 0
+  attackState: 1

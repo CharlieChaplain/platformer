@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b8d7fcf581a758543a8e43e7b7a869c0
+guid: aaa66847da086014d887df74e3572710
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -79,7 +79,7 @@ ModelImporter:
       name: pokeTwoHand
       takeName: Take 001
       firstFrame: 1
-      lastFrame: 100
+      lastFrame: 120
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

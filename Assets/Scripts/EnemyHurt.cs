@@ -21,7 +21,8 @@ public class EnemyHurt : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 		if (other.gameObject.tag == "HurtBox" && PlayerManager.Instance.attacking) {
-			Vector3 dir = new Vector3 (-transform.forward.x, 0.0f, -transform.forward.z);
+			//Vector3 dir = new Vector3 (-transform.forward.x, 0.0f, -transform.forward.z);
+			Vector3 dir = transform.position - other.transform.parent.parent.position;
 			dir.Normalize ();
 			SendMessage ("BounceBack", dir);
 			anim.SetInteger ("State", 1);
@@ -31,6 +32,10 @@ public class EnemyHurt : MonoBehaviour {
 
 			if(hitParticles != null){
 				hitParticles.Emit (15);
+			}
+
+			if (GetComponent<Chase> () != null) {
+				GetComponent<Chase> ().doChase = true;
 			}
 		}
 	}

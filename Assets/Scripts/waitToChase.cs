@@ -24,9 +24,6 @@ public class waitToChase : MonoBehaviour {
 			timer = 0;
 		}
 
-		//Debug.Log (timer);
-		Debug.Log (keepChasing);
-
 		if (timer >= 5 || keepChasing) {
 			keepChasing = true;
 			chase.doChase = true;

@@ -7,8 +7,8 @@ public class PlayerManager : MonoBehaviour {
 	public static PlayerManager Instance { get; private set; }
 
 	public float health;
-
 	public bool attacking;
+	public GameObject currentWep;
 
 	private void Awake(){
 		if (Instance == null) {

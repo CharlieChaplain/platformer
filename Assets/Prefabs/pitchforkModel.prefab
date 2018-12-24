@@ -314,8 +314,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 8
-  swingTime: 0.3
+  swingTime: 0.5
   twoHand: 1
+  attackState: 2
 --- !u!114 &114832189166115428
 MonoBehaviour:
   m_ObjectHideFlags: 1
