@@ -464,6 +464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: -5
+  inputModeKeyboard: 0
 --- !u!4 &700300456
 Transform:
   m_ObjectHideFlags: 0

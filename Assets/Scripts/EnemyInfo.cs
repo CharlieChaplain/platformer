@@ -7,6 +7,7 @@ public class EnemyInfo : MonoBehaviour {
 	public float currentHealth;
 	public float maxHealth;
 	public float attackTimer;
+	public float deathTime;
 
 	public Animator anim;
 
@@ -48,7 +49,15 @@ public class EnemyInfo : MonoBehaviour {
 		if (GetComponent<LookAt> () != null)
 			GetComponent<LookAt> ().canLook = false;
 
-		yield return new WaitForSeconds (5f);
+		yield return new WaitForSeconds (deathTime);
+
+		float timer = 0;
+		while (timer < 2) {
+			timer += Time.deltaTime;
+			transform.position = new Vector3(transform.position.x, transform.position.y - (0.03f * Time.deltaTime), transform.position.z);
+			yield return null;
+		}
+
 		GameObject.Destroy (this.gameObject);
 	}
 }

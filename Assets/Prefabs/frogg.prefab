@@ -1275,6 +1275,7 @@ MonoBehaviour:
   currentHealth: 15
   maxHealth: 15
   attackTimer: 0
+  deathTime: 3
   anim: {fileID: 95478002923553538}
   enemyState: 0
 --- !u!114 &114604263519439222
@@ -1306,7 +1307,6 @@ MonoBehaviour:
   controller: {fileID: 143601944029954046}
   anim: {fileID: 95478002923553538}
   target: {fileID: 0}
-  transform: {fileID: 0}
   doChase: 0
   knockbackTime: 0.2
   enemyInfo: {fileID: 114582540888006304}

@@ -41,6 +41,8 @@ public class PlayerMoveController : MonoBehaviour {
 
 		float prevY = moveDirection.y;
 		moveDirection = (transform.forward * Input.GetAxis("Vertical")) + (transform.right * Input.GetAxis("Horizontal"));
+		if (GameManager.Instance.inputModeKeyboard)
+			moveDirection.Normalize ();
 		moveDirection *= moveSpeed;
 		moveDirection.y = prevY;
 		//the way you're looking before canMove is factored in

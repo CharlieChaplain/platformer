@@ -35,11 +35,11 @@ public class CameraMove : MonoBehaviour {
 		float deltaX = 0.0f;
 		float deltaY = 0.0f;
 
-		//gets x position of mouse to rotate pivot, unless joystick is connected in which it'll use that
-		if (Input.GetJoystickNames ().Length == 0) {
+		//gets x position of mouse to rotate pivot, unless input mode is not keyboard aka a joystick is being used
+		if (GameManager.Instance.inputModeKeyboard) {
 			deltaX = Input.GetAxis ("Mouse X") * rotateSpeed;
 			deltaY = Input.GetAxis ("Mouse Y") * rotateSpeed;
-		} else if (Input.GetJoystickNames ().Length > 0) {
+		} else {
 			deltaX = Input.GetAxis ("HorizontalLook") * rotateSpeed;
 			deltaY = Input.GetAxis ("VerticalLook") * rotateSpeed;
 		}
