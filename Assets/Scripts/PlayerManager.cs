@@ -6,7 +6,8 @@ public class PlayerManager : MonoBehaviour {
 
 	public static PlayerManager Instance { get; private set; }
 
-	public float health;
+	public float currentHealth;
+	public float maxHealth;
 	public bool attacking;
 	public GameObject currentWep;
 
@@ -26,6 +27,9 @@ public class PlayerManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (currentHealth > maxHealth)
+			currentHealth = maxHealth;
+		if (currentHealth < 0)
+			currentHealth = 0;
 	}
 }
