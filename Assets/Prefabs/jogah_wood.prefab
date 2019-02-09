@@ -284,6 +284,7 @@ GameObject:
   - component: {fileID: 114254451964010304}
   - component: {fileID: 114059587618001348}
   - component: {fileID: 114046797032537158}
+  - component: {fileID: 114130784466476846}
   m_Layer: 10
   m_Name: jogah_wood
   m_TagString: Untagged
@@ -389,7 +390,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1775945562330986}
-  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalRotation: {x: -0, y: -0.04628692, z: -0, w: -0.9989282}
   m_LocalPosition: {x: -4.3072944, y: 1.1498239, z: -42.087727}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -397,7 +398,7 @@ Transform:
   - {fileID: 4658032590614690}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -354.694, z: 0}
 --- !u!4 &4160309860173636
 Transform:
   m_ObjectHideFlags: 1
@@ -804,7 +805,7 @@ MonoBehaviour:
   currentHealth: 15
   maxHealth: 15
   attackTimer: 0
-  deathTime: 0
+  deathTime: 2
   anim: {fileID: 95191451628364808}
   enemyState: 0
 --- !u!114 &114076440691985476
@@ -824,6 +825,20 @@ MonoBehaviour:
   timeWhenHurts: 2.5
   timeWhenDoesntHurt: 2.7
   anim: {fileID: 95191451628364808}
+--- !u!114 &114130784466476846
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1775945562330986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4223eb7df1c9754a8f72effa25432ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 95191451628364808}
+  enemyInfo: {fileID: 114066375973886228}
+  hitParticles: {fileID: 0}
 --- !u!114 &114254451964010304
 MonoBehaviour:
   m_ObjectHideFlags: 1

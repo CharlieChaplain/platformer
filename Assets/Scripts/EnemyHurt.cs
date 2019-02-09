@@ -46,7 +46,6 @@ public class EnemyHurt : MonoBehaviour {
 	}
 
 	void getHurt(float damage){
-		//Debug.Log("Ow, that did " + damage + " damage!");
 		enemyInfo.currentHealth -= damage;
 	}
 }

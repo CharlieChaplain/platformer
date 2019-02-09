@@ -107,7 +107,8 @@ public class PlayerMoveController : MonoBehaviour {
     {
         hurtTimer = (float)array[1];
         Vector3 direction = (Vector3)array[0];
-        transform.forward = -direction;
+        Vector3 directionXZ = new Vector3(direction.x, 0.0f, direction.z);
+        transform.forward = -directionXZ;
         moveDirection = direction;
         MovementManager.Instance.canMove = false;
     }

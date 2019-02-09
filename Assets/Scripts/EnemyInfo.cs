@@ -26,6 +26,7 @@ public class EnemyInfo : MonoBehaviour {
 	void Start () {
 		currentHealth = maxHealth;
 		enemyState = EnemyState.Move;
+        anim = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -58,6 +59,6 @@ public class EnemyInfo : MonoBehaviour {
 			yield return null;
 		}
 
-		GameObject.Destroy (this.gameObject);
+		GameObject.Destroy (this.gameObject.transform.root.gameObject);
 	}
 }

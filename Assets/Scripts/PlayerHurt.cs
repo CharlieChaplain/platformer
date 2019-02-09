@@ -23,7 +23,8 @@ public class PlayerHurt : MonoBehaviour {
             {
                 PlayerManager.Instance.currentHealth -= enemy.currentAttack.damage;
 
-                Vector3 direction = other.transform.position - transform.root.position;
+                Vector3 direction = transform.position - other.transform.root.position;
+                direction *= 2.0f;
                 float time = 0.2f;
                 object[] array = { direction, time };
                 SendMessage("PlayerKnockback", array);

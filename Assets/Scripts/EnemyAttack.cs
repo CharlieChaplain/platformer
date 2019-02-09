@@ -62,12 +62,4 @@ public class EnemyAttack : MonoBehaviour {
         timer = 0;
         canHurt = false;
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(canHurt && other.tag == "Player")
-        {
-            Debug.Log(timer);
-        }
-    }
 }

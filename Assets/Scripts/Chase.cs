@@ -14,6 +14,7 @@ public class Chase : MonoBehaviour {
 	public Transform target;
 
 	public bool doChase;
+    public bool doWander = false;
 	private Vector3 moveDirection;
 	private Vector3 moveXZ;
 
@@ -22,6 +23,12 @@ public class Chase : MonoBehaviour {
 
 	public EnemyInfo enemyInfo;
 
+    private float randomWanderTime; //randomly generated time between wandering and not wandering
+    private bool wandering; //determines if character is currently wandering
+    private Vector3 randomWanderDirection; //the direction the character walks in
+    public bool waitBetweenWanders; //determines if wandering should flow into the next without waiting
+    public Transform home; //where the character will wander around. If null, the character will wander without any restrictions
+    public float allowance; //how far from home the character can get
 
 	// Use this for initialization
 	void Start () {
@@ -76,8 +83,13 @@ public class Chase : MonoBehaviour {
 	void Move(){
 		if (doChase)
 			Pursue ();
-		else
-			Wander ();
+        else
+        {
+            if (doWander)
+                Wander();
+            else
+                StandStill();
+        }
 
 		transform.forward = Vector3.RotateTowards (transform.forward, moveXZ, turnSpeed * Time.deltaTime, 0.0f);
 	}
@@ -93,8 +105,42 @@ public class Chase : MonoBehaviour {
 
 	//wanders randomly around
 	void Wander(){
-        moveXZ = new Vector3(0.0f, 0.0f, 0.0f);
+        if (wandering)
+        {
+            randomWanderTime -= Time.deltaTime;
+            moveXZ = randomWanderDirection * moveSpeed;
+        }
+        else
+        {
+            randomWanderTime -= Time.deltaTime;
+            moveXZ = new Vector3(0.0f, 0.0f, 0.0f);
+        }
+
+        //if wandertime is up, then set a new random wander time, new direction to wander, and flop whether they are wandering or waiting
+        if(randomWanderTime <= 0)
+        {
+            randomWanderTime = Random.Range(2.0f, 3.0f);
+            wandering = !wandering;
+            randomWanderDirection = new Vector3(Random.Range(-1.0f, 1.0f), 0.0f, Random.Range(-1.0f, 1.0f));
+
+            if (home != null && (home.position - transform.position).sqrMagnitude > allowance * allowance)
+            {
+                randomWanderDirection = home.position - transform.position;
+                randomWanderDirection.y = 0;
+            }
+
+            randomWanderDirection.Normalize();
+        }
+
+        //if character should always be wandering, always set wander to true
+        if (!waitBetweenWanders)
+            wandering = true;
 	}
+
+    void StandStill()
+    {
+        moveXZ = new Vector3(0.0f, 0.0f, 0.0f);
+    }
 
     void AttackLogic()
     {
