@@ -14,6 +14,7 @@ public class LookAt : MonoBehaviour {
 
 	public bool takeAGander;
 	public bool canLook;
+    public bool moveHead;
 	private Quaternion offsetQuat;
 
 	// Use this for initialization
@@ -42,7 +43,7 @@ public class LookAt : MonoBehaviour {
 				takeAGander = false;
 			}
 
-			if (takeAGander) {
+			if (takeAGander && moveHead) {
 				Vector3 lookDir = target.position - joint.position;
 				Quaternion toRotation = Quaternion.LookRotation (lookDir) * offsetQuat;
 				joint.rotation = Quaternion.Lerp (joint.rotation, toRotation, lookSpeed * Time.deltaTime);

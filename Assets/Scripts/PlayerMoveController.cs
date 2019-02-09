@@ -13,7 +13,6 @@ public class PlayerMoveController : MonoBehaviour {
 	public float turnSpeed = 25.0f;
     public CharacterController controller;
 	public Animator anim;
-    public Transform transform;
 	public Transform waist;
 	public Transform pivot;
 	public GameObject model;
@@ -22,15 +21,17 @@ public class PlayerMoveController : MonoBehaviour {
 	private Vector3 moveDirection;
 	private float terminalVelocity = -25.0f;
 
+    private float hurtTimer;
+
 
 	// Use this for initialization
 	void Start () {
         controller = GetComponent<CharacterController>();
-		transform = GetComponent<Transform> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        checkKnockbackTimer();
 		ApplyGravity ();
     	Move();
 	}
@@ -40,19 +41,16 @@ public class PlayerMoveController : MonoBehaviour {
 		CheckGround ();
 
 		float prevY = moveDirection.y;
-		moveDirection = (transform.forward * Input.GetAxis("Vertical")) + (transform.right * Input.GetAxis("Horizontal"));
-		if (GameManager.Instance.inputModeKeyboard)
-			moveDirection.Normalize ();
-		moveDirection *= moveSpeed;
+        if (MovementManager.Instance.canMove)
+        {
+            moveDirection = (transform.forward * Input.GetAxis("Vertical")) + (transform.right * Input.GetAxis("Horizontal"));
+            if (GameManager.Instance.inputModeKeyboard)
+                moveDirection.Normalize();
+            moveDirection *= moveSpeed;
+        }
 		moveDirection.y = prevY;
 		//the way you're looking before canMove is factored in
 		Vector3 lookDirection = moveDirection;
-
-		//if player can't move, sets moveDirection x and z to zero
-		if (!MovementManager.Instance.canMove) {
-			moveDirection.x = 0;
-			moveDirection.z = 0;
-		}
 
 		//jumps
 		if (grounded) {
@@ -103,5 +101,30 @@ public class PlayerMoveController : MonoBehaviour {
 			moveDirection.y = terminalVelocity;
 		}
 	}
+
+    //initiates knocking the player backwards towards a specific direction
+    void PlayerKnockback(object[] array)
+    {
+        hurtTimer = (float)array[1];
+        Vector3 direction = (Vector3)array[0];
+        transform.forward = -direction;
+        moveDirection = direction;
+        MovementManager.Instance.canMove = false;
+    }
+
+    void checkKnockbackTimer()
+    {
+        if(hurtTimer > 0)
+            hurtTimer -= Time.deltaTime;
+        if (hurtTimer <= 0)
+            MovementManager.Instance.canMove = true;
+    }
+
+    //will stop the player in their tracks. Combine this with MovementManager.Instance.canMove = false to fully stop player
+    void PlayerStopMovement()
+    {
+        moveDirection.x = 0;
+        moveDirection.z = 0;
+    }
 
 }

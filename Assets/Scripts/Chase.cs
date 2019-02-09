@@ -44,6 +44,7 @@ public class Chase : MonoBehaviour {
 			}
 			break;
 		case EnemyInfo.EnemyState.Attacking:
+            AttackLogic();
 			break;
 		case EnemyInfo.EnemyState.Invincible:
 			break;
@@ -53,7 +54,10 @@ public class Chase : MonoBehaviour {
 			break;
 		}
 
-		if(enemyInfo.enemyState != EnemyInfo.EnemyState.Dead)
+        moveDirection.x = moveXZ.x;
+        moveDirection.z = moveXZ.z;
+
+        if (enemyInfo.enemyState != EnemyInfo.EnemyState.Dead)
 			controller.Move (moveDirection * Time.deltaTime);
 
 		//if animator has speed parameter, sets it
@@ -64,7 +68,10 @@ public class Chase : MonoBehaviour {
 				}
 			}
 		}
-	}
+
+        //will update the animator on what state the enemy is in
+        anim.SetInteger("state", (int)enemyInfo.enemyState);
+    }
 
 	void Move(){
 		if (doChase)
@@ -73,8 +80,6 @@ public class Chase : MonoBehaviour {
 			Wander ();
 
 		transform.forward = Vector3.RotateTowards (transform.forward, moveXZ, turnSpeed * Time.deltaTime, 0.0f);
-		moveDirection.x = moveXZ.x;
-		moveDirection.z = moveXZ.z;
 	}
 
 	//pursues the target's transform position
@@ -88,8 +93,20 @@ public class Chase : MonoBehaviour {
 
 	//wanders randomly around
 	void Wander(){
-		
+        moveXZ = new Vector3(0.0f, 0.0f, 0.0f);
 	}
+
+    void AttackLogic()
+    {
+        moveXZ = new Vector3(0.0f, 0.0f, 0.0f);
+
+        Vector3 direction = target.position - transform.position;
+        direction.y = 0.0f;
+        direction.Normalize();
+
+        transform.forward = direction;
+
+    }
 
 	void ApplyGravity(){
 		moveDirection.y += (Physics.gravity.y * gravMult);

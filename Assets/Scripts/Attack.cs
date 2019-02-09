@@ -34,7 +34,10 @@ public class Attack : MonoBehaviour {
 				//currentWep.SendMessage ("SetTrailTimer");
 
 				if ((int)state == 2)
-					MovementManager.Instance.canMove = false;
+                {
+                    MovementManager.Instance.canMove = false;
+                    SendMessage("PlayerStopMovement");
+                }
 			}
 		} else {
 			attackTimer -= Time.deltaTime;

@@ -7,13 +7,14 @@ public class waitToChase : MonoBehaviour {
 	private Chase chase;
 	private LookAt lookAt;
 	private float timer = 0;
+    public float timeToAggro; //set this to 0 for immediate chasing
 
-	private bool keepChasing = false;
+	public bool keepChasing = false;
 
 	// Use this for initialization
 	void Start () {
 		chase = GetComponent<Chase> ();
-		lookAt = GetComponent<LookAt> ();
+        lookAt = GetComponent<LookAt> ();
 	}
 	
 	// Update is called once per frame
@@ -24,10 +25,20 @@ public class waitToChase : MonoBehaviour {
 			timer = 0;
 		}
 
-		if (timer >= 5 || keepChasing) {
+		if (timer >= timeToAggro || keepChasing) {
 			keepChasing = true;
 			chase.doChase = true;
 			lookAt.canLook = false;
 		}
 	}
+
+    //used to stop the object from chasing
+    void ResetWaitToChase()
+    {
+        chase.doChase = false;
+        lookAt.takeAGander = false;
+        keepChasing = false;
+        lookAt.canLook = true;
+        timer = 0;
+    }
 }
