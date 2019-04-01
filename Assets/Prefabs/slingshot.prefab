@@ -143,3 +143,4 @@ MonoBehaviour:
   ranged: 1
   attackState: 3
   projectileSpeed: 10
+  range: 10

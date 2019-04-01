@@ -10,6 +10,7 @@ public class WeaponInfo : MonoBehaviour {
     public bool ranged;
 	public int attackState;
     public float projectileSpeed; //only used if weapon has projectiles
+    public float range; //only used if weapon has projectiles
 
 	// Use this for initialization
 	void Start () {

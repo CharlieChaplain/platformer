@@ -85,6 +85,9 @@ GameObject:
   - component: {fileID: 114986480079518974}
   - component: {fileID: 114062030694482632}
   - component: {fileID: 114673133823898258}
+  - component: {fileID: 114717479799366600}
+  - component: {fileID: 114966422209943668}
+  - component: {fileID: 114930334249753816}
   m_Layer: 0
   m_Name: Player3
   m_TagString: Player
@@ -475,7 +478,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1281297211800752}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.88, z: 0.02}
+  m_LocalPosition: {x: -51.3, y: 10.6, z: 14.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4705797075760470}
@@ -886,7 +889,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 4135717336929688}
-  transform: {fileID: 0}
 --- !u!114 &114673133823898258
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -900,6 +902,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 95204696690233560}
   currentWep: {fileID: 0}
+--- !u!114 &114717479799366600
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1281297211800752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2dd21cd56b20b246ba84f83cade822b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114930334249753816
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1281297211800752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54d881b6a0f4dfb4d8cf93ff1bbac1d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doubleClickTimer: 0
+--- !u!114 &114966422209943668
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1281297211800752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cf27914ab429274d90f505809b73fbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  joint: {fileID: 4788100285521758}
+  rotOffset: {x: 0, y: 0, z: 0}
+  lookSpeed: 10
+  outerRadius: 1000
+  innerRadius: 1
+  fov: 200
+  takeAGander: 1
+  canLook: 0
+  moveHead: 1
 --- !u!114 &114986480079518974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -919,7 +965,6 @@ MonoBehaviour:
   turnSpeed: 25
   controller: {fileID: 0}
   anim: {fileID: 95204696690233560}
-  transform: {fileID: 0}
   waist: {fileID: 0}
   pivot: {fileID: 0}
   model: {fileID: 1768361102515220}

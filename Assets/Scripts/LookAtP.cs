@@ -35,7 +35,7 @@ public class LookAtP : MonoBehaviour {
         target = PlayerManager.Instance.currentTarget.transform;
         canLook = PlayerManager.Instance.canLook;
 
-        //last update happens after animations are resolved
+        //late update happens after animations are resolved
         if (canLook)
         {
             float dist = Vector3.Distance(target.position, transform.position);
