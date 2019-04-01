@@ -657,7 +657,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 4232744593346688}
-  transform: {fileID: 0}
 --- !u!136 &136307971823822554
 CapsuleCollider:
   m_ObjectHideFlags: 1

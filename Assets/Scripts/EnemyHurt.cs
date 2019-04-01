@@ -11,7 +11,9 @@ public class EnemyHurt : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		enemyInfo = GetComponent<EnemyInfo> ();
+        anim = GetComponent<Animator>();
+        enemyInfo = GetComponent<EnemyInfo> ();
+        hitParticles = GetComponentInChildren<ParticleSystem>();
 	}
 	
 	// Update is called once per frame
@@ -20,28 +22,28 @@ public class EnemyHurt : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		if (other.gameObject.tag == "HurtBox" && PlayerManager.Instance.attacking) {
-			//Vector3 dir = new Vector3 (-transform.forward.x, 0.0f, -transform.forward.z);
-			Vector3 dir = transform.position - other.transform.parent.parent.position;
-			dir.Normalize ();
-			SendMessage ("BounceBack", dir);
-			anim.SetInteger ("State", 1);
-			enemyInfo.enemyState = EnemyInfo.EnemyState.Hit;
+        if (other.tag == "HurtBox" && PlayerManager.Instance.attacking) {
+            //Vector3 dir = new Vector3 (-transform.forward.x, 0.0f, -transform.forward.z);
+            Vector3 dir = transform.position - other.transform.parent.parent.position;
+            dir.Normalize();
+            SendMessage("BounceBack", dir);
+            anim.SetInteger("state", 1);
+            enemyInfo.enemyState = EnemyInfo.EnemyState.Hit;
 
-			getHurt (other.transform.parent.gameObject.GetComponent<WeaponInfo>().damage);
+            getHurt(other.transform.parent.GetComponent<WeaponInfo>().damage);
 
 			if(hitParticles != null){
-				hitParticles.Emit (15);
+				hitParticles.Emit(15);
 			}
 
-			if (GetComponent<Chase> () != null) {
-				GetComponent<Chase> ().doChase = true;
+			if (GetComponent<EnemyInfo>() != null) {
+				GetComponent<EnemyInfo>().aggroed = true;
 			}
 		}
 	}
 
 	void resetState () {
-		anim.SetInteger ("State", 0);
+		anim.SetInteger ("state", 0);
 		enemyInfo.enemyState = EnemyInfo.EnemyState.Move;
 	}
 

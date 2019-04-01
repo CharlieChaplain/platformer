@@ -11,6 +11,8 @@ public class EnemyInfo : MonoBehaviour {
 
 	public Animator anim;
 
+    public bool aggroed;
+
 	public enum EnemyState
 	{
 		Move = 0,
@@ -45,7 +47,7 @@ public class EnemyInfo : MonoBehaviour {
 
 	IEnumerator Die(){
 		enemyState = EnemyState.Dead;
-		anim.SetInteger ("State", (int)enemyState);
+		anim.SetInteger ("state", (int)enemyState);
 		GetComponent<CharacterController> ().enabled = false;
 		if (GetComponent<LookAt> () != null)
 			GetComponent<LookAt> ().canLook = false;

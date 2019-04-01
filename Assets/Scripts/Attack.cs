@@ -12,7 +12,8 @@ public class Attack : MonoBehaviour {
 	private enum AttackState { 
 		none = 0,
 		lightOneHand = 1,
-		thrustTwoHand = 2
+		thrustTwoHand = 2,
+        fireSlingshot = 3
 	};
 
 	private AttackState state = AttackState.none;
@@ -37,6 +38,16 @@ public class Attack : MonoBehaviour {
                 {
                     MovementManager.Instance.canMove = false;
                     SendMessage("PlayerStopMovement");
+                }
+                else if ((int)state == 3)
+                {
+
+                    Vector3 force;
+                    if (PlayerManager.Instance.currentTarget != gameObject)
+                        force = (PlayerManager.Instance.currentTarget.transform.position - currentWep.transform.position).normalized * currentWep.GetComponent<WeaponInfo>().projectileSpeed;
+                    else
+                        force = transform.forward * currentWep.GetComponent<WeaponInfo>().projectileSpeed;
+                    currentWep.GetComponent<PlayerFire>().Launch(force);
                 }
 			}
 		} else {

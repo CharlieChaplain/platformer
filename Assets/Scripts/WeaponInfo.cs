@@ -7,7 +7,9 @@ public class WeaponInfo : MonoBehaviour {
 	public float damage;
 	public float swingTime;
 	public bool twoHand;
+    public bool ranged;
 	public int attackState;
+    public float projectileSpeed; //only used if weapon has projectiles
 
 	// Use this for initialization
 	void Start () {

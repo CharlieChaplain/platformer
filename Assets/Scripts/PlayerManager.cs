@@ -10,6 +10,8 @@ public class PlayerManager : MonoBehaviour {
 	public float maxHealth;
 	public bool attacking;
 	public GameObject currentWep;
+    public GameObject currentTarget; //the current target of the player for ranged attacks
+    public bool canLook; //determines if the player can look around
 
 	private void Awake(){
 		if (Instance == null) {
@@ -18,11 +20,13 @@ public class PlayerManager : MonoBehaviour {
 		} else {
 			Destroy (gameObject);
 		}
+        canLook = false;
 	}
 
 	// Use this for initialization
 	void Start () {
 		attacking = false;
+        currentTarget = GameObject.FindGameObjectWithTag("Player");
 	}
 	
 	// Update is called once per frame
@@ -31,5 +35,10 @@ public class PlayerManager : MonoBehaviour {
 			currentHealth = maxHealth;
 		if (currentHealth < 0)
 			currentHealth = 0;
+
+        if (currentWep.GetComponent<WeaponInfo>().ranged)
+            canLook = true;
+        else
+            canLook = false;
 	}
 }

@@ -57,6 +57,7 @@ MonoBehaviour:
   allWeapons:
   - {fileID: 1877793692046600, guid: 0d8e5c2f4faf73f409b5bc287f608cd2, type: 2}
   - {fileID: 1536372160027246, guid: 023e468e9d4ff2c44ab6599796c146ff, type: 2}
+  - {fileID: 1508664001739778, guid: 6c0dff0854c129444b032775c95123f6, type: 2}
   hand: {fileID: 0}
 --- !u!114 &114387516810108978
 MonoBehaviour:

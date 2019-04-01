@@ -5,11 +5,10 @@ using UnityEngine;
 public class ShadowMove : MonoBehaviour {
 
 	public Transform target;
-	public Transform transform;
 
 	// Use this for initialization
 	void Start () {
-		transform = GetComponent<Transform> ();
+        target = transform.parent.transform;
 	}
 	
 	// Update is called once per frame

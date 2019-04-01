@@ -13,7 +13,6 @@ public class Chase : MonoBehaviour {
 
 	public Transform target;
 
-	public bool doChase;
     public bool doWander = false;
 	private Vector3 moveDirection;
 	private Vector3 moveXZ;
@@ -29,6 +28,8 @@ public class Chase : MonoBehaviour {
     public bool waitBetweenWanders; //determines if wandering should flow into the next without waiting
     public Transform home; //where the character will wander around. If null, the character will wander without any restrictions
     public float allowance; //how far from home the character can get
+
+    private Vector3 direction;
 
 	// Use this for initialization
 	void Start () {
@@ -81,7 +82,7 @@ public class Chase : MonoBehaviour {
     }
 
 	void Move(){
-		if (doChase)
+		if (enemyInfo.aggroed)
 			Pursue ();
         else
         {
@@ -90,17 +91,18 @@ public class Chase : MonoBehaviour {
             else
                 StandStill();
         }
-
-		transform.forward = Vector3.RotateTowards (transform.forward, moveXZ, turnSpeed * Time.deltaTime, 0.0f);
+		transform.forward = Vector3.RotateTowards (transform.forward, direction, turnSpeed * Time.deltaTime, 0.0f);
 	}
 
 	//pursues the target's transform position
 	void Pursue(){
-		Vector3 direction = target.position - transform.position;
+		direction = target.position - transform.position;
 		direction.y = 0.0f;
 		direction.Normalize ();
 
-		moveXZ = direction * moveSpeed;
+
+        //transform.forward = Vector3.RotateTowards(transform.forward, moveXZ, turnSpeed * Time.deltaTime, 0.0f);
+        moveXZ = direction * moveSpeed;
 	}
 
 	//wanders randomly around
@@ -108,7 +110,8 @@ public class Chase : MonoBehaviour {
         if (wandering)
         {
             randomWanderTime -= Time.deltaTime;
-            moveXZ = randomWanderDirection * moveSpeed;
+            direction = randomWanderDirection;
+            moveXZ = direction * moveSpeed;
         }
         else
         {
@@ -146,21 +149,20 @@ public class Chase : MonoBehaviour {
     {
         moveXZ = new Vector3(0.0f, 0.0f, 0.0f);
 
-        Vector3 direction = target.position - transform.position;
+        direction = target.position - transform.position;
         direction.y = 0.0f;
         direction.Normalize();
 
-        transform.forward = direction;
-
+        transform.forward = Vector3.RotateTowards(transform.forward, direction, turnSpeed * Time.deltaTime, 0.0f);
     }
 
 	void ApplyGravity(){
 		moveDirection.y += (Physics.gravity.y * gravMult);
 	}
 
-	void BounceBack(Vector3 direction){
+	void BounceBack(Vector3 p_dir){
 		knockbackTimer = knockbackTime;
-		moveDirection = direction * 10.0f;
+		moveDirection = p_dir * 10.0f;
 	}
 
 	private void OnTriggerEnter(Collider other){
