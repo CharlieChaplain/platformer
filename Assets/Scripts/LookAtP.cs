@@ -60,7 +60,8 @@ public class LookAtP : MonoBehaviour {
             {
                 Vector3 lookDir = target.position - joint.position;
                 Quaternion toRotation = Quaternion.LookRotation(lookDir) * offsetQuat;
-                joint.rotation = Quaternion.Lerp(joint.rotation, toRotation, lookSpeed * Time.deltaTime);
+                //joint.rotation = Quaternion.Lerp(joint.rotation, toRotation, lookSpeed * Time.deltaTime);  // lerping doesn't work in lateupdate
+                joint.rotation = toRotation;
             }
         }
         //transform.rotation *= Quaternion.Euler (rotOffset.x, rotOffset.y, rotOffset.z);

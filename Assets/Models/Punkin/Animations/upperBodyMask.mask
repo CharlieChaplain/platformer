@@ -28,27 +28,29 @@ AvatarMask:
     m_Weight: 0
   - m_Path: root/hips/hipR/kneeR/ankleR
     m_Weight: 0
-  - m_Path: root/hips/waist
+  - m_Path: root/hips/hips2
+    m_Weight: 0
+  - m_Path: root/hips/hips2/waist
     m_Weight: 1
-  - m_Path: root/hips/waist/shoulders
+  - m_Path: root/hips/hips2/waist/shoulders
     m_Weight: 1
-  - m_Path: root/hips/waist/shoulders/neck
+  - m_Path: root/hips/hips2/waist/shoulders/neck
     m_Weight: 1
-  - m_Path: root/hips/waist/shoulders/neck/hat
+  - m_Path: root/hips/hips2/waist/shoulders/neck/hat
     m_Weight: 1
-  - m_Path: root/hips/waist/shoulders/shoulderL
+  - m_Path: root/hips/hips2/waist/shoulders/shoulderL
     m_Weight: 1
-  - m_Path: root/hips/waist/shoulders/shoulderL/elbowL
+  - m_Path: root/hips/hips2/waist/shoulders/shoulderL/elbowL
     m_Weight: 1
-  - m_Path: root/hips/waist/shoulders/shoulderL/elbowL/wristL
+  - m_Path: root/hips/hips2/waist/shoulders/shoulderL/elbowL/wristL
     m_Weight: 1
-  - m_Path: root/hips/waist/shoulders/shoulderL/elbowL/wristL/handL
+  - m_Path: root/hips/hips2/waist/shoulders/shoulderL/elbowL/wristL/handL
     m_Weight: 1
-  - m_Path: root/hips/waist/shoulders/shoulderR
+  - m_Path: root/hips/hips2/waist/shoulders/shoulderR
     m_Weight: 1
-  - m_Path: root/hips/waist/shoulders/shoulderR/elbowR
+  - m_Path: root/hips/hips2/waist/shoulders/shoulderR/elbowR
     m_Weight: 1
-  - m_Path: root/hips/waist/shoulders/shoulderR/elbowR/wristR
+  - m_Path: root/hips/hips2/waist/shoulders/shoulderR/elbowR/wristR
     m_Weight: 1
-  - m_Path: root/hips/waist/shoulders/shoulderR/elbowR/wristR/handR
+  - m_Path: root/hips/hips2/waist/shoulders/shoulderR/elbowR/wristR/handR
     m_Weight: 1
