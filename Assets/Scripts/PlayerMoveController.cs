@@ -74,8 +74,11 @@ public class PlayerMoveController : MonoBehaviour {
 			model.transform.rotation = Quaternion.Slerp (model.transform.rotation, newRot, step);
 		}
 
-		//put animation variable connections here
-		anim.SetFloat("Speed", (Mathf.Abs(moveDirection.x) + Mathf.Abs(moveDirection.z)));
+        //START HERE
+        PlayerManager.Instance.faceDir = transform.Find("punkin2").forward;
+
+        //put animation variable connections here
+        anim.SetFloat("Speed", (Mathf.Abs(moveDirection.x) + Mathf.Abs(moveDirection.z)));
 		anim.SetFloat ("YSpeed", controller.velocity.y);
     }
 

@@ -65,8 +65,6 @@ public class ChangeTarget : MonoBehaviour {
         {
             PlayerManager.Instance.currentTarget = gameObject;
         }
-
-        
 	}
 
     void SendThickRay()

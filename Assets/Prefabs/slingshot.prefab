@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 114223125693983386}
   m_Layer: 0
   m_Name: slingshot
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,9 +138,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  swingTime: 0
+  swingTime: 0.403
   twoHand: 0
   ranged: 1
   attackState: 3
-  projectileSpeed: 10
+  projectileSpeed: 65
   range: 20
+  timeWhenShoot: 0

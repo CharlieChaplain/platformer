@@ -22,23 +22,19 @@ public class EnemyHurt : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-        if (other.tag == "HurtBox" && PlayerManager.Instance.attacking) {
-            //Vector3 dir = new Vector3 (-transform.forward.x, 0.0f, -transform.forward.z);
-            Vector3 dir = transform.position - other.transform.parent.parent.position;
-            dir.Normalize();
-            SendMessage("BounceBack", dir);
-            anim.SetInteger("state", 1);
-            enemyInfo.enemyState = EnemyInfo.EnemyState.Hit;
 
-            getHurt(other.transform.parent.GetComponent<WeaponInfo>().damage);
-
-			if(hitParticles != null){
-				hitParticles.Emit(15);
-			}
-
-			if (GetComponent<EnemyInfo>() != null) {
-				GetComponent<EnemyInfo>().aggroed = true;
-			}
+        //if the trigger that entered is a hurtbox
+        if (other.tag == "HurtBox") {
+            //if the trigger that entered is a player projectile
+            if(other.gameObject.layer == 12) //12 = PlayerProjectile
+            {
+                getHurt(other.GetComponent<ProjectileInfo>().damage, other);
+            }
+            //else if non projectile and player is currently attacking. (attacking doesn't matter because the player does no damage with ranged, only the projectile does)
+            else if (PlayerManager.Instance.attacking)
+            {
+                getHurt(other.transform.parent.GetComponent<WeaponInfo>().damage, other);
+            }
 		}
 	}
 
@@ -47,7 +43,28 @@ public class EnemyHurt : MonoBehaviour {
 		enemyInfo.enemyState = EnemyInfo.EnemyState.Move;
 	}
 
-	void getHurt(float damage){
+	void getHurt(float damage, Collider other){
+        Vector3 dir;
+        if (other.transform.root != null)
+            dir = transform.position - other.transform.root.position;
+        else
+            dir = transform.position - other.transform.position;
+        dir.Normalize();
+        SendMessage("BounceBack", dir);
+        anim.SetInteger("state", 1);
+        enemyInfo.enemyState = EnemyInfo.EnemyState.Hit;
+
+        Debug.Log("ouch for " + damage);
 		enemyInfo.currentHealth -= damage;
-	}
+
+        if (hitParticles != null)
+        {
+            hitParticles.Emit(15);
+        }
+
+        if (GetComponent<EnemyInfo>() != null)
+        {
+            GetComponent<EnemyInfo>().aggroed = true;
+        }
+    }
 }

@@ -17,8 +17,9 @@ public class ChangeWeapon : MonoBehaviour {
 	void Start () {
 		index = 0;
 		currentWep = allWeapons [index];
-		PlayerManager.Instance.currentWep = currentWep;
+		//PlayerManager.Instance.currentWep = currentWep;
 		currentWepCopy = GameObject.Instantiate (currentWep, hand);
+        PlayerManager.Instance.currentWep = currentWepCopy;
 	}
 	
 	// Update is called once per frame
@@ -37,9 +38,10 @@ public class ChangeWeapon : MonoBehaviour {
 		if (index != lastIndex) {
 			GameObject.Destroy (currentWepCopy);
 			currentWep = allWeapons [index];
-			PlayerManager.Instance.currentWep = currentWep;
+			//PlayerManager.Instance.currentWep = currentWep;
 			currentWepCopy = GameObject.Instantiate (currentWep, hand);
-		}
+            PlayerManager.Instance.currentWep = currentWepCopy;
+        }
 
 		lastIndex = index;
 	}

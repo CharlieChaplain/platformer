@@ -19,11 +19,17 @@ public class PelletBreak : ProjectileBreak {
         
         GetComponentInChildren<MeshRenderer>().enabled = false;
         Collider[] colliders = GetComponents<Collider>();
+        
         foreach(Collider col in colliders)
         {
             col.enabled = false;
         }
-
+        
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+        
         yield return new WaitForSeconds(3);
         GameObject.Destroy(gameObject);
     }

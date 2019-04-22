@@ -12,6 +12,7 @@ public class PlayerManager : MonoBehaviour {
 	public GameObject currentWep;
     public GameObject currentTarget; //the current target of the player for ranged attacks
     public bool canLook; //determines if the player can look around
+    public Vector3 faceDir; //the direction the player is facing (not looking via camera)
 
 	private void Awake(){
 		if (Instance == null) {
