@@ -17990,30 +17990,26 @@ Prefab:
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
-    - target: {fileID: 114059587618001348, guid: 04cfe3d652636594b83577e6b7939869,
-        type: 2}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 1259028688}
-    - target: {fileID: 114254451964010304, guid: 04cfe3d652636594b83577e6b7939869,
-        type: 2}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 874651875}
-    - target: {fileID: 114708262696974180, guid: 04cfe3d652636594b83577e6b7939869,
-        type: 2}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 1529996578}
     - target: {fileID: 114046797032537158, guid: 04cfe3d652636594b83577e6b7939869,
         type: 2}
       propertyPath: player
       value: 
       objectReference: {fileID: 1259028688}
-    - target: {fileID: 4149775769422314, guid: 04cfe3d652636594b83577e6b7939869, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -526.711
-      objectReference: {fileID: 0}
+    - target: {fileID: 114708262696974180, guid: 04cfe3d652636594b83577e6b7939869,
+        type: 2}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1529996578}
+    - target: {fileID: 114254451964010304, guid: 04cfe3d652636594b83577e6b7939869,
+        type: 2}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 874651875}
+    - target: {fileID: 114059587618001348, guid: 04cfe3d652636594b83577e6b7939869,
+        type: 2}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1259028688}
     - target: {fileID: 1775945562330986, guid: 04cfe3d652636594b83577e6b7939869, type: 2}
       propertyPath: m_Name
       value: jogah_wood (1)
