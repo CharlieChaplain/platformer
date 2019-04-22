@@ -47,6 +47,12 @@ public class EnemyInfo : MonoBehaviour {
 
 	IEnumerator Die(){
 		enemyState = EnemyState.Dead;
+        if(PlayerManager.Instance.currentTarget.transform.root.gameObject == gameObject)
+        {
+            PlayerManager.Instance.currentTarget = GameObject.Find("Player");
+            Debug.Log("hello");
+        }
+
 		anim.SetInteger ("state", (int)enemyState);
 		GetComponent<CharacterController> ().enabled = false;
 		if (GetComponent<LookAt> () != null)

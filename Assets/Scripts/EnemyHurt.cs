@@ -54,7 +54,6 @@ public class EnemyHurt : MonoBehaviour {
         anim.SetInteger("state", 1);
         enemyInfo.enemyState = EnemyInfo.EnemyState.Hit;
 
-        Debug.Log("ouch for " + damage);
 		enemyInfo.currentHealth -= damage;
 
         if (hitParticles != null)
