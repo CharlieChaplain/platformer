@@ -13,6 +13,8 @@ public class EnemyInfo : MonoBehaviour {
 
     public bool aggroed;
 
+    int enumCount = 0;
+
 	public enum EnemyState
 	{
 		Move = 0,
@@ -40,17 +42,22 @@ public class EnemyInfo : MonoBehaviour {
 	}
 
 	void checkDeath(){
-		if (currentHealth <= 0) {
+		if (currentHealth <= 0 && enemyState != EnemyState.Dead) {
 			StartCoroutine (Die ());
 		}
 	}
 
 	IEnumerator Die(){
 		enemyState = EnemyState.Dead;
+
+        if(gameObject.GetComponent<Tosser>() != null)
+        {
+            SendMessage("DestroyAllProjectiles");
+        }
+
         if(PlayerManager.Instance.currentTarget.transform.root.gameObject == gameObject)
         {
             PlayerManager.Instance.currentTarget = GameObject.Find("Player");
-            Debug.Log("hello");
         }
 
 		anim.SetInteger ("state", (int)enemyState);

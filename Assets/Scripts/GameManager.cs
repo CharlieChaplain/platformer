@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour {
 
     public float gravity;
 	public bool inputModeKeyboard;
+    public Queue<GameObject> InactivePellets; //slingshot pellets shot by Punkin
+    public GameObject pelletPrefab; //the prefab of the slingshot pellet
 
 	private void Awake(){
 		if (Instance == null) {
@@ -26,6 +28,14 @@ public class GameManager : MonoBehaviour {
 		} else {
 			inputModeKeyboard = false;
 		}
+
+        InactivePellets = new Queue<GameObject>();
+
+        for(int i = 0; i < 6; i++)
+        {
+            GameObject proj = GameObject.Instantiate(pelletPrefab, transform.position, Quaternion.identity);
+            InactivePellets.Enqueue(proj);
+        }
 	}
 	
 	// Update is called once per frame

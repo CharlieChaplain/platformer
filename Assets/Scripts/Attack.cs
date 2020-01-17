@@ -113,6 +113,7 @@ public class Attack : MonoBehaviour
         twoHand = currentWep.GetComponent<WeaponInfo>().twoHand;
         anim.SetBool("TwoHand", twoHand);
 
+        /*
         //conditional
         if (!PlayerManager.Instance.attacking && Input.GetAxis("Attack") > 0)
         {
@@ -123,7 +124,7 @@ public class Attack : MonoBehaviour
             attackTime = 0;
             timer = 0;
         }
-
+        */
         stateNum = (int)state;
         anim.SetInteger("AttackState", stateNum);
     }
@@ -132,6 +133,7 @@ public class Attack : MonoBehaviour
     //This is due to finding the length of the animation via the mecanim animator, which is only updated btw update and lateupdate
     private void LateUpdate()
     {
+        /*
         //once attacking
         if (PlayerManager.Instance.attacking)
         {
@@ -147,8 +149,8 @@ public class Attack : MonoBehaviour
 
             
         }
+        */
     }
-
 
     private IEnumerator attack()
     {
@@ -159,13 +161,6 @@ public class Attack : MonoBehaviour
         }
         attackTime = animClip[0].clip.length / animInfo.speed;
         timeSet = true;
-
-        //will stop the player from moving for animations that require that
-        if ((int)state == 2)
-        {
-            MovementManager.Instance.canMove = false;
-            SendMessage("PlayerStopMovement");
-        }
 
         while(timer < attackTime) { 
             //will shoot a projectile at the appropriate time for weapons that require that
@@ -185,7 +180,7 @@ public class Attack : MonoBehaviour
             yield return null;
         }
         state = AttackState.none;
-        PlayerManager.Instance.attacking = false;
+        //PlayerManager.Instance.attacking = false;
         timeSet = false;
         timer = 0;
         notShot = true;

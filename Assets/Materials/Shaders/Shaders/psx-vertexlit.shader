@@ -65,12 +65,12 @@ Shader "psx/vertexlit" {
 						o.colorFog = fogColor;
 						o.colorFog.a = clamp(fogDensity,0,1);
 
-						//Cut out polygons
-						if (distance > unity_FogStart.z + unity_FogColor.a * 255)
+						//Cut out polygons     <------ this makes polygons go weird from far away. Possibly useful if it stops them rendering if they're far enough away
+						/*if (distance > unity_FogStart.z + unity_FogColor.a * 255)
 						{
 							o.pos.w = 0;
 						}
-
+						*/
 						return o;
 					}
 

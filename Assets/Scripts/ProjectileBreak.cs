@@ -5,6 +5,8 @@ using UnityEngine;
 public class ProjectileBreak : MonoBehaviour {
 
     protected bool thrown;
+    protected float timer = 0;
+    protected float lifeLimit; //how long the projectile can survive before being reset
 
     public bool getThrown() { return thrown; }
     public void setThrown(bool p_thrown) {
@@ -30,5 +32,15 @@ public class ProjectileBreak : MonoBehaviour {
     {
         if (thrown)
             StartBreak();
+    }
+
+    protected void LifeTimer()
+    {
+        timer += Time.deltaTime;
+        if(timer >= lifeLimit)
+        {
+            StartBreak();
+            timer = 0;
+        }
     }
 }

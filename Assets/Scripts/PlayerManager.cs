@@ -5,16 +5,20 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour {
 
 	public static PlayerManager Instance { get; private set; }
-
+    public GameObject player;
 	public float currentHealth;
 	public float maxHealth;
-	public bool attacking;
 	public GameObject currentWep;
     public GameObject currentTarget; //the current target of the player for ranged attacks
-    public bool canLook; //determines if the player can look around
+    public bool canMove; //determines if the player can move around
+    public bool canLook; //determines if the player can look around for purposes of ranged weapons (rotates at hip)
     public Vector3 faceDir; //the direction the player is facing (not looking via camera)
 
-	private void Awake(){
+    //used for attacks
+    public bool canAttack;
+    //public bool attacking;        Do I need this?
+
+    private void Awake(){
 		if (Instance == null) {
 			Instance = this;
 			DontDestroyOnLoad (gameObject);
@@ -22,11 +26,13 @@ public class PlayerManager : MonoBehaviour {
 			Destroy (gameObject);
 		}
         canLook = false;
-	}
+        canMove = true;
+        canAttack = true;
+        //attacking = false;
+    }
 
 	// Use this for initialization
 	void Start () {
-		attacking = false;
         currentTarget = GameObject.FindGameObjectWithTag("Player");
 	}
 	

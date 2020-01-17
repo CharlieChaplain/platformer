@@ -13,6 +13,9 @@ public class WeaponInfo : MonoBehaviour {
     public float range; //only used if weapon has projectiles
     public float timeWhenShoot; //only used if weapon has projectiles
 
+    public BoxCollider hurtbox; //the hurtbox of the weapon. Used by animation events to turn it on/off
+    public TrailRenderer trail; //the trail the weapon leaves when swung. Used by animation events to turn it on/off
+
 	// Use this for initialization
 	void Start () {
 		

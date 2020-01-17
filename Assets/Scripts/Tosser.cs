@@ -18,9 +18,12 @@ public class Tosser : MonoBehaviour {
 
     private float throwTime;
 
+    public List<GameObject> allProjectiles;
+
     // Use this for initialization
     void Start () {
         throwTime = timeTilThrow;
+        allProjectiles = new List<GameObject>();
 	}
 	
 	// Update is called once per frame
@@ -31,6 +34,7 @@ public class Tosser : MonoBehaviour {
     public void CreateProjectile()
     {
         newProjectile = Instantiate(projectile);
+        allProjectiles.Add(newProjectile);
         StartCoroutine("holdProjectile");
     }
 
@@ -41,21 +45,25 @@ public class Tosser : MonoBehaviour {
 
     private IEnumerator holdProjectile()
     {
-        timeTilThrow = throwTime;
-
-        newProjectile.transform.position = transform.position + transform.forward;
-
-        while(timeTilThrow > 0)
+        if (newProjectile != null)
         {
-            if(timeTilThrow <= timeTilPickup)
-                newProjectile.transform.position = hand.position + -hand.up * offset;
-            timeTilThrow -= Time.deltaTime;
-            yield return null;
+            timeTilThrow = throwTime;
+
+            newProjectile.transform.position = transform.position + transform.forward;
+            newProjectile.GetComponent<ProjectileInfo>().origin = gameObject;
+
+            while (timeTilThrow > 0)
+            {
+                if (timeTilThrow <= timeTilPickup)
+                    newProjectile.transform.position = hand.position + -hand.up * offset;
+                timeTilThrow -= Time.deltaTime;
+                yield return null;
+            }
+
+
+            Vector3 force = FindForce();
+            newProjectile.GetComponent<RockFly>().Launch(force);
         }
-
-
-        Vector3 force = FindForce();
-        newProjectile.GetComponent<RockFly>().Launch(force);
     }
 
     private Vector3 FindForce()
@@ -66,8 +74,6 @@ public class Tosser : MonoBehaviour {
         float heightOffset = direction.y;
 
         float heightForceMult = Mathf.Pow(1.05f, heightOffset);
-
-        Debug.Log(heightForceMult);
 
         direction.y = 0.0f;
 
@@ -82,6 +88,14 @@ public class Tosser : MonoBehaviour {
         Vector3 finalDir = direction * magnitude * heightForceMult;
 
         return finalDir;
+    }
+
+    //for use when enemy dies. Will destroy all projectiles it threw
+    private void DestroyAllProjectiles() { 
+        foreach(GameObject proj in allProjectiles)
+        {
+            proj.GetComponent<ProjectileBreak>().StartBreak();
+        }
     }
 }
 

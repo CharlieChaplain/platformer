@@ -19,9 +19,9 @@ public class CameraMove : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		offset = new Vector3 (0f, -2.5f, 5f);
+		offset = new Vector3 (0f, -2f, 8.5f); //Vector3 (0f, -2.5f, 5f);
 
-		pivot.transform.position = target.transform.position;
+        pivot.transform.position = target.transform.position;
 		pivot.transform.parent = null;
 
 		Cursor.lockState = CursorLockMode.Locked;

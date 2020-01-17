@@ -1,54 +1,146 @@
 fileFormatVersion: 2
 guid: afdee91d598d655428d37431c7e69b97
 ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: ankleL
-    100002: ankleR
-    100004: elbowL
-    100006: elbowR
-    100008: handL
-    100010: handR
-    100012: hat
-    100014: hipL
-    100016: hipR
-    100018: hips
-    100020: hips2
-    100022: //RootNode
-    100024: kneeL
-    100026: kneeR
-    100028: neck
-    100030: root
-    100032: shoulderL
-    100034: shoulderR
-    100036: shoulders
-    100038: waist
-    100040: wristL
-    100042: wristR
-    400000: ankleL
-    400002: ankleR
-    400004: elbowL
-    400006: elbowR
-    400008: handL
-    400010: handR
-    400012: hat
-    400014: hipL
-    400016: hipR
-    400018: hips
-    400020: hips2
-    400022: //RootNode
-    400024: kneeL
-    400026: kneeR
-    400028: neck
-    400030: root
-    400032: shoulderL
-    400034: shoulderR
-    400036: shoulders
-    400038: waist
-    400040: wristL
-    400042: wristR
-    7400000: idleTwoHandNew
-    9500000: //RootNode
+  serializedVersion: 26
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: ankleL
+  - first:
+      1: 100002
+    second: ankleR
+  - first:
+      1: 100004
+    second: elbowL
+  - first:
+      1: 100006
+    second: elbowR
+  - first:
+      1: 100008
+    second: handL
+  - first:
+      1: 100010
+    second: handR
+  - first:
+      1: 100012
+    second: hat
+  - first:
+      1: 100014
+    second: hipL
+  - first:
+      1: 100016
+    second: hipR
+  - first:
+      1: 100018
+    second: hips
+  - first:
+      1: 100020
+    second: hips2
+  - first:
+      1: 100022
+    second: //RootNode
+  - first:
+      1: 100024
+    second: kneeL
+  - first:
+      1: 100026
+    second: kneeR
+  - first:
+      1: 100028
+    second: neck
+  - first:
+      1: 100030
+    second: root
+  - first:
+      1: 100032
+    second: shoulderL
+  - first:
+      1: 100034
+    second: shoulderR
+  - first:
+      1: 100036
+    second: shoulders
+  - first:
+      1: 100038
+    second: waist
+  - first:
+      1: 100040
+    second: wristL
+  - first:
+      1: 100042
+    second: wristR
+  - first:
+      4: 400000
+    second: ankleL
+  - first:
+      4: 400002
+    second: ankleR
+  - first:
+      4: 400004
+    second: elbowL
+  - first:
+      4: 400006
+    second: elbowR
+  - first:
+      4: 400008
+    second: handL
+  - first:
+      4: 400010
+    second: handR
+  - first:
+      4: 400012
+    second: hat
+  - first:
+      4: 400014
+    second: hipL
+  - first:
+      4: 400016
+    second: hipR
+  - first:
+      4: 400018
+    second: hips
+  - first:
+      4: 400020
+    second: hips2
+  - first:
+      4: 400022
+    second: //RootNode
+  - first:
+      4: 400024
+    second: kneeL
+  - first:
+      4: 400026
+    second: kneeR
+  - first:
+      4: 400028
+    second: neck
+  - first:
+      4: 400030
+    second: root
+  - first:
+      4: 400032
+    second: shoulderL
+  - first:
+      4: 400034
+    second: shoulderR
+  - first:
+      4: 400036
+    second: shoulders
+  - first:
+      4: 400038
+    second: waist
+  - first:
+      4: 400040
+    second: wristL
+  - first:
+      4: 400042
+    second: wristR
+  - first:
+      74: 7400000
+    second: idleTwoHandNew
+  - first:
+      95: 9500000
+    second: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -80,6 +172,7 @@ ModelImporter:
     - serializedVersion: 16
       name: idleTwoHandNew
       takeName: Take 001
+      internalID: 0
       firstFrame: 1
       lastFrame: 100
       wrapMode: 0
@@ -111,6 +204,8 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -118,27 +213,32 @@ ModelImporter:
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.01
-    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
   copyAvatar: 1
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -148,12 +248,12 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 0.01
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 643d9cdbe4e24bc43b0dfceb8d9a4bf1,
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 74994add725ac8c4584b06fc7dbde547,
     type: 3}
   animationType: 2
   humanoidOversampling: 1

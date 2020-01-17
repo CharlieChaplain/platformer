@@ -31,7 +31,7 @@ public class EnemyHurt : MonoBehaviour {
                 getHurt(other.GetComponent<ProjectileInfo>().damage, other);
             }
             //else if non projectile and player is currently attacking. (attacking doesn't matter because the player does no damage with ranged, only the projectile does)
-            else if (PlayerManager.Instance.attacking)
+            else
             {
                 getHurt(other.transform.parent.GetComponent<WeaponInfo>().damage, other);
             }

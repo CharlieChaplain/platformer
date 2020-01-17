@@ -19,9 +19,14 @@ public class RockBreak : ProjectileBreak {
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<Collider>().enabled = false;
 
-        GetComponentInChildren<ParticleSystem>().Emit(6);
+        GetComponentInChildren<ParticleSystem>().Emit(600);
 
-        yield return new WaitForSeconds(3);
+        
+
+        yield return new WaitForSeconds(1);
+
+        GetComponent<ProjectileInfo>().origin.GetComponent<Tosser>().allProjectiles.Remove(gameObject); //this removes the projectile from the origin's list so it doesn't reference dead projectiles
+
         GameObject.Destroy(gameObject);
     }
 

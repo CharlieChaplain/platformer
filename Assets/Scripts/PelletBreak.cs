@@ -7,31 +7,20 @@ public class PelletBreak : ProjectileBreak {
 	// Use this for initialization
 	void Start () {
         thrown = true;
+        lifeLimit = 3;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (GetComponent<ProjectileInfo>().active)
+            LifeTimer();
 	}
 
     IEnumerator Break()
     {
-        
-        GetComponentInChildren<MeshRenderer>().enabled = false;
-        Collider[] colliders = GetComponents<Collider>();
-        
-        foreach(Collider col in colliders)
-        {
-            col.enabled = false;
-        }
-        
-        foreach (Transform child in transform)
-        {
-            child.gameObject.SetActive(false);
-        }
-        
-        yield return new WaitForSeconds(3);
-        GameObject.Destroy(gameObject);
+        GetComponent<ProjectileInfo>().ToggleActive();
+        yield return new WaitForSeconds(1);
+        transform.position = GameManager.Instance.gameObject.transform.position;
     }
 
     public override void StartBreak()

@@ -17,7 +17,11 @@ public class PlayerFire : MonoBehaviour {
 
     public void Launch(Vector3 force)
     {
-        GameObject proj = GameObject.Instantiate(projectile, transform.position, Quaternion.identity);
+        //GameObject proj = GameObject.Instantiate(projectile, transform.position, Quaternion.identity);
+
+        GameObject proj = GameManager.Instance.InactivePellets.Dequeue();
+        proj.transform.position = transform.position;
+        proj.GetComponent<ProjectileInfo>().ToggleActive();
         proj.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
     }
 }

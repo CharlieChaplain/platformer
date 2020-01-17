@@ -1,54 +1,11 @@
 fileFormatVersion: 2
-guid: 6cf1e7c6cb9a4e44eb26e6e71241fe40
+guid: 65daacb42383bbe44a359979def5e311
 ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: ankleL
-    100002: ankleR
-    100004: elbowL
-    100006: elbowR
-    100008: handL
-    100010: handR
-    100012: hat
-    100014: hipL
-    100016: hipR
-    100018: hips
-    100020: hips2
-    100022: kneeL
-    100024: kneeR
-    100026: neck
-    100028: root
-    100030: //RootNode
-    100032: shoulderL
-    100034: shoulderR
-    100036: shoulders
-    100038: waist
-    100040: wristL
-    100042: wristR
-    400000: ankleL
-    400002: ankleR
-    400004: elbowL
-    400006: elbowR
-    400008: handL
-    400010: handR
-    400012: hat
-    400014: hipL
-    400016: hipR
-    400018: hips
-    400020: hips2
-    400022: kneeL
-    400024: kneeR
-    400026: neck
-    400028: root
-    400030: //RootNode
-    400032: shoulderL
-    400034: shoulderR
-    400036: shoulders
-    400038: waist
-    400040: wristL
-    400042: wristR
-    7400000: punkRunNew
-    9500000: //RootNode
+  serializedVersion: 26
+  internalIDToNameTable:
+  - first:
+      74: 1827226128182048838
+    second: runNew
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -78,10 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: punkRunNew
+      name: runNew
       takeName: Take 001
+      internalID: 0
       firstFrame: 1
-      lastFrame: 120
+      lastFrame: 100
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -105,12 +63,14 @@ ModelImporter:
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -118,27 +78,32 @@ ModelImporter:
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.01
-    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
   copyAvatar: 1
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -148,12 +113,12 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 643d9cdbe4e24bc43b0dfceb8d9a4bf1,
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 74994add725ac8c4584b06fc7dbde547,
     type: 3}
   animationType: 2
   humanoidOversampling: 1
