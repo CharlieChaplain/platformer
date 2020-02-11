@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 41196271741305551}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6420243785845831510}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: torso
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 156096516907034690}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: skirt01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2063334576735221338}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: skirt04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +131,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8577333552099318536}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: wristR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6212623479296040811}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: skirt03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6584140225506874335}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shoulderR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,7 +225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1962745581698830331}
   - component: {fileID: 8187577955164574574}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -323,7 +323,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7728383051145777321}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: skirt02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -354,7 +354,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2981152599428826633}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shoulders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -387,7 +387,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4327739575875347829}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: elbowL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -418,7 +418,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2606090117191518132}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -449,7 +449,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6108160919313929237}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shoulderL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -480,7 +480,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8705896164853468415}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: elbowR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -511,7 +511,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1892684593557858431}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: waist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -543,7 +543,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7737019757978195112}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: fingersR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -573,7 +573,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6888058706683019405}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: fingersL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -603,7 +603,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6899238246077978711}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: wristL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -638,7 +638,7 @@ GameObject:
   - component: {fileID: 920601683873457400}
   - component: {fileID: 920601683873457402}
   - component: {fileID: 920601683873457403}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: flatwoodsMonster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
