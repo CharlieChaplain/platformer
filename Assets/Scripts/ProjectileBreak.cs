@@ -4,43 +4,43 @@ using UnityEngine;
 
 public class ProjectileBreak : MonoBehaviour {
 
-    protected bool thrown;
-    protected float timer = 0;
-    protected float lifeLimit; //how long the projectile can survive before being reset
+    private ProjectileInfo info;
+    private float timer = 0;
+    public float lifeLimit; //how long the projectile can survive before being reset, in seconds
 
-    public bool getThrown() { return thrown; }
-    public void setThrown(bool p_thrown) {
-        thrown = p_thrown;
-    }
-
-    // Use this for initialization
     void Start () {
-
+        info = GetComponent<ProjectileInfo>();
     }
 	
-	// Update is called once per frame
 	void Update () {
+        if (info.active)
+        {
+            timer += Time.deltaTime;
+        }
 
+        if (timer >= lifeLimit)
+        {
+            timer = 0;
+            StartBreak();
+        }
     }
 
     public virtual void StartBreak()
     {
-
+        StartCoroutine("Break");
     }
 
-    protected void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (thrown)
+        if (info.active)
             StartBreak();
     }
 
-    protected void LifeTimer()
+    IEnumerator Break()
     {
-        timer += Time.deltaTime;
-        if(timer >= lifeLimit)
-        {
-            StartBreak();
-            timer = 0;
-        }
+        info.ToggleActive(false);
+        yield return new WaitForSeconds(1);
+        transform.position = new Vector3(0, -20f, 0);
+        info.homeQueue.Enqueue(gameObject);
     }
 }

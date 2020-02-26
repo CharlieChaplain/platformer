@@ -19,7 +19,7 @@ public class billboard : MonoBehaviour
     void LateUpdate()
     {
         this.transform.LookAt(billboard.cam);
-        transform.Rotate(0, 180, 0);
+        transform.Rotate(90, 0, 0);
         eangles = transform.eulerAngles;
         eangles.x *= freeRotation.x;
         eangles.y *= freeRotation.y;

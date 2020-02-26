@@ -8,7 +8,6 @@ public class ShadowMove : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        target = transform.parent.transform;
 	}
 	
 	// Update is called once per frame
@@ -18,7 +17,8 @@ public class ShadowMove : MonoBehaviour {
 		int layerMask = 1 << 8;
 		Physics.Raycast (target.position, Vector3.down, out hit, Mathf.Infinity, layerMask, QueryTriggerInteraction.Collide);
 
-		transform.position = new Vector3 (posXZ.x, hit.point.y + 0.05f, posXZ.z);
-		transform.up = hit.normal;
+        posXZ.y = hit.point.y;
+        transform.position = posXZ;
+        transform.up = hit.normal;
 	}
 }

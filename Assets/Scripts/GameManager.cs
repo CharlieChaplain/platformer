@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour {
         for(int i = 0; i < 6; i++)
         {
             GameObject proj = GameObject.Instantiate(pelletPrefab, transform.position, Quaternion.identity);
+            proj.GetComponent<ProjectileInfo>().homeQueue = InactivePellets;
             InactivePellets.Enqueue(proj);
         }
 	}

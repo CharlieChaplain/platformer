@@ -20,31 +20,13 @@ public class PlayerHurt : MonoBehaviour {
         {
             if(other.gameObject.layer == 10) //if hurtbox is on enemy layer
             {
-                EnemyLogic enemy = other.GetComponentInParent<EnemyLogic>();
-                if (enemy.currentAttack.getAttacking() && enemy.currentAttack.getCanHurt())
-                {
-                    PlayerManager.Instance.currentHealth -= enemy.currentAttack.damage;
-
-                    Vector3 direction = transform.position - other.transform.root.position;
-                    direction.y = 100.0f;
-                    direction *= 5.0f * enemy.currentAttack.knockbackMult;
-                    float time = 0.2f;
-                    object[] array = { direction, time };
-                    SendMessage("PlayerKnockback", array);
-                }
+                float damage = other.gameObject.transform.root.GetComponentInChildren<Enemy>().currentAttack.damage;
+                PlayerManager.Instance.currentHealth -= damage;
             }
             else if (other.gameObject.layer == 11) //if hurtbox is on enemyProjectile layer
             {
                 ProjectileInfo projectile = other.GetComponentInParent<ProjectileInfo>();
-
                 PlayerManager.Instance.currentHealth -= projectile.damage;
-
-                Vector3 direction = transform.position - other.transform.root.position;
-                direction.y = 100.0f;
-                direction *= 5.0f * projectile.knockbackMult;
-                float time = 0.2f;
-                object[] array = { direction, time };
-                SendMessage("PlayerKnockback", array);
             }
         }
     }

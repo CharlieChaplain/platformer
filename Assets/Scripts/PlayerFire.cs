@@ -21,7 +21,7 @@ public class PlayerFire : MonoBehaviour {
 
         GameObject proj = GameManager.Instance.InactivePellets.Dequeue();
         proj.transform.position = transform.position;
-        proj.GetComponent<ProjectileInfo>().ToggleActive();
+        proj.GetComponent<ProjectileInfo>().ToggleActive(true);
         proj.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
     }
 }

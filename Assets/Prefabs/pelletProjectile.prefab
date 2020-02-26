@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1001185482988586}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.017538, y: 0.017538, z: 0.017538}
   m_Children: []
   m_Father: {fileID: 4496520883154286}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33404287991437510
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -89,10 +89,9 @@ GameObject:
   - component: {fileID: 4496520883154286}
   - component: {fileID: 114448664170496744}
   - component: {fileID: 54423183123219546}
-  - component: {fileID: 135952848598962346}
   - component: {fileID: 135983454637878736}
   - component: {fileID: 114498962370338010}
-  - component: {fileID: 114733862686549818}
+  - component: {fileID: 13177377162362577}
   m_Layer: 12
   m_Name: pelletProjectile
   m_TagString: HurtBox
@@ -108,8 +107,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1359873921377382}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -48.695, y: 7.261, z: 10.285}
-  m_LocalScale: {x: 0.017538, y: 0.017538, z: 0.017538}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4816698763799028}
   - {fileID: 4546663767524922}
@@ -145,19 +144,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!135 &135952848598962346
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1359873921377382}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 4.3
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &135983454637878736
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -169,7 +155,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 4.57
+  m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114498962370338010
 MonoBehaviour:
@@ -192,7 +178,7 @@ MonoBehaviour:
   trail: {fileID: 96598749910904926}
   meshRender: {fileID: 23090794151376256}
   rb: {fileID: 54423183123219546}
---- !u!114 &114733862686549818
+--- !u!114 &13177377162362577
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -201,9 +187,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1359873921377382}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce63b132a7b07de469427d9418ea9fde, type: 3}
+  m_Script: {fileID: 11500000, guid: 10b80e89876092541ad6cd967eb5103e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifeLimit: 5
 --- !u!1 &1820016163584790
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,7 +270,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.123083115
+        value: 0.091588974
         inSlope: 0
         outSlope: 0
         tangentMode: 0

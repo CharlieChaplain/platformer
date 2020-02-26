@@ -21,7 +21,7 @@ public class SpawnPrefab : MonoBehaviour {
 		if (timer >= 3) {
 			timer = 0;
 			GameObject newGuy = Object.Instantiate (obj, transform.position, transform.rotation);
-			newGuy.gameObject.GetComponent<Chase> ().target = target.transform;
+			//newGuy.gameObject.GetComponent<Chase> ().target = target.transform;
 		}
 	}
 }
