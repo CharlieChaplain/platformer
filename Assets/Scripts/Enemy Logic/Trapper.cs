@@ -27,7 +27,10 @@ public class Trapper : Enemy
     {
         //these functions calculate a desired direction
         if (aggroed)
+        {
             desiredDir = GetComponent<E_Pursue>().Pursue(target.transform.position);
+            desiredDir.y = 0;
+        }
         else
             desiredDir = GetComponent<E_Wander>().Wander(spawn, desiredDir);
 

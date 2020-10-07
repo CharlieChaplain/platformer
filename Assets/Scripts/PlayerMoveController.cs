@@ -15,6 +15,7 @@ public class PlayerMoveController : MonoBehaviour {
 	public Animator anim;
 	public Transform waist;
 	public Transform pivot; //the place the camera pivots around, aka the camera anchor
+    public Transform punkin; //used to get the model's facing direction each frame
 	public GameObject model;
 	public bool grounded;
     
@@ -39,6 +40,9 @@ public class PlayerMoveController : MonoBehaviour {
 		ApplyGravity ();
     	Move();
         CheckAttack();
+
+        if (Input.GetKeyDown(KeyCode.P))
+            anim.SetTrigger("Die");
 	}
 
     void Move()
@@ -84,7 +88,7 @@ public class PlayerMoveController : MonoBehaviour {
 		}
 
         //START HERE
-        PlayerManager.Instance.faceDir = transform.Find("punkin2").forward;
+        PlayerManager.Instance.faceDir = punkin.forward;
 
         //put animation variable connections here
         anim.SetFloat("Speed", (Mathf.Abs(moveDirection.x) + Mathf.Abs(moveDirection.z)));

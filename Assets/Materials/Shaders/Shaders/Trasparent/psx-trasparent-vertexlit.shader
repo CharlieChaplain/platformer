@@ -3,7 +3,7 @@
 Shader "psx/trasparent/vertexlit" {
 	Properties{
 		_MainTex("Base (RGB)", 2D) = "white" {}
-		_Color("Color", Color) = (1.0, 1.0, 1.0, 1.0)
+		_Tint("Tint Color", Color) = (1.0, 1.0, 1.0, 1.0)
 	}
 		SubShader{
 		Tags{ "Queue" = "Transparent" "RenderType" = "Transparent" }
@@ -27,7 +27,7 @@ Shader "psx/trasparent/vertexlit" {
 	};
 
 	float4 _MainTex_ST;
-	uniform float4 _Color;
+	fixed4 _Tint;
 	uniform half4 unity_FogStart;
 	uniform half4 unity_FogEnd;
 
@@ -75,8 +75,6 @@ Shader "psx/trasparent/vertexlit" {
 			o.pos.w = 0;
 		}
 
-		o.color *= _Color;
-
 		return o;
 	}
 
@@ -87,6 +85,7 @@ Shader "psx/trasparent/vertexlit" {
 		half4 c = tex2D(_MainTex, IN.uv_MainTex / IN.normal.r)*IN.color;
 		half4 color = c*(IN.colorFog.a);
 		color.rgb += IN.colorFog.rgb*(1 - IN.colorFog.a);
+		color.rgb *= _Tint.rgb;
 		color.a = c.a;
 		return color;
 	}

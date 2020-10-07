@@ -73,7 +73,7 @@ public class ChangeTarget : MonoBehaviour {
 
         LayerMask mask = LayerMask.GetMask("Enemy");
 
-        if(Physics.SphereCast(transform.position, 5.0f, transform.position - sceneCam.transform.position, out hit,
+        if(Physics.SphereCast(transform.position, 3.0f, transform.position - sceneCam.transform.position, out hit,
             PlayerManager.Instance.currentWep.GetComponent<WeaponInfo>().range, mask, 0))
         {
             if (hit.transform.root.Find("LookAtMe").gameObject != null)

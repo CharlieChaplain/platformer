@@ -44,6 +44,7 @@ public class Stalker : Enemy
             desiredDir = MoveIntelligence();
         else
             desiredDir = Vector3.zero;
+            
 
         //-------applies desiredDir to the controller, moving the character-----------
         Vector3 deltaPos = Vector3.zero;
@@ -65,7 +66,7 @@ public class Stalker : Enemy
         if (aggroed)
         {
             //checks if it should deaggro
-            if ((target.transform.position - transform.position).magnitude > 25f)
+            if ((target.transform.position - transform.position).magnitude > 30f)
                 aggroed = false;
         }
         else
@@ -87,10 +88,12 @@ public class Stalker : Enemy
         if(distToTarget > 10f)
         {
             moveDir = GetComponent<E_Pursue>().Pursue(target.transform.position);
+            moveDir.y = 0;
         }
         else if(distToTarget < 8f)
         {
             moveDir = GetComponent<E_Pursue>().Pursue(dirToTarget.normalized * 8f);
+            moveDir.y = 0;
         }
         else
         {

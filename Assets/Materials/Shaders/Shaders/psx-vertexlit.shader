@@ -3,6 +3,7 @@
 Shader "psx/vertexlit" {
 	Properties{
 		_MainTex("Base (RGB)", 2D) = "white" {}
+		_Tint("Tint Color", Color) = (1,1,1,1)
 	}
 		SubShader{
 			Tags { "RenderType" = "Opaque" }
@@ -26,6 +27,7 @@ Shader "psx/vertexlit" {
 					};
 
 					float4 _MainTex_ST;
+					fixed4 _Tint;
 					uniform half4 unity_FogStart;
 					uniform half4 unity_FogEnd;
 
@@ -81,6 +83,7 @@ Shader "psx/vertexlit" {
 						half4 c = tex2D(_MainTex, IN.uv_MainTex / IN.normal.r)*IN.color;
 						half4 color = c*(IN.colorFog.a);
 						color.rgb += IN.colorFog.rgb*(1 - IN.colorFog.a);
+						color.rgb *= _Tint.rgb;
 						return color;
 					}
 				ENDCG

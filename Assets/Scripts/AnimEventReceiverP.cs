@@ -46,4 +46,20 @@ public class AnimEventReceiverP : MonoBehaviour
             currentWep.GetComponent<PlayerFire>().Launch(force);
         }
     }
+
+    void PlayFootstepSound()
+    {
+        SoundManager.Instance.PlayPlayerFootstep();
+    }
+
+    void PlayWeaponSound(int index)
+    {
+        float pitch = 1.0f;
+        //randomizes the pitch of the whoosh
+        if (index == 0)
+            pitch = Random.Range(0.5f, 1.25f);
+
+
+        SoundManager.Instance.PlayWeaponSound(index, pitch);
+    }
 }

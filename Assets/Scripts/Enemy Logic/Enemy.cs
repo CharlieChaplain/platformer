@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
     public List<EnemyAttack> allAttacks;
     public EnemyAttack currentAttack;
 
+    public List<E_PlaySound> allSounds;
+
     public Animator anim;
     protected Vector3 spawn;
     public GameObject target;

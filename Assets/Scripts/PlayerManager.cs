@@ -14,9 +14,24 @@ public class PlayerManager : MonoBehaviour {
     public bool canLook; //determines if the player can look around for purposes of ranged weapons (rotates at hip)
     public Vector3 faceDir; //the direction the player is facing (not looking via camera)
 
+    public Material playerTex; //the opaque player texture
+    public Material playerTexTrans; //the transparent player texture
+    public ParticleSystem poisonBubbles; //the bubbles that emit when player is poisoned
+
+    public string savePointScene;
+    public int savePointIndex;
+
     //used for attacks
     public bool canAttack;
     //public bool attacking;        Do I need this?
+
+    public enum StatusEffect
+    {
+        none,
+        poisoned
+    };
+
+    public StatusEffect currentStatus = StatusEffect.none;
 
     private void Awake(){
 		if (Instance == null) {
@@ -33,8 +48,12 @@ public class PlayerManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        currentTarget = GameObject.FindGameObjectWithTag("Player");
-	}
+        player = GameObject.FindGameObjectWithTag("Player");
+        currentTarget = player;
+        playerTex = player.GetComponentInChildren<SkinnedMeshRenderer>().materials[0];
+        playerTexTrans = player.GetComponentInChildren<SkinnedMeshRenderer>().materials[1];
+        poisonBubbles = GameObject.Find("PlayerPoisonParticles").GetComponent<ParticleSystem>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
