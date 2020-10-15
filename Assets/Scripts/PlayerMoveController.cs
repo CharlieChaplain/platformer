@@ -18,6 +18,7 @@ public class PlayerMoveController : MonoBehaviour {
     public Transform punkin; //used to get the model's facing direction each frame
 	public GameObject model;
 	public bool grounded;
+    public bool doubleJumpPossible;
     
 	public Vector3 moveDirection;
 	private float terminalVelocity = -25.0f;
@@ -59,12 +60,20 @@ public class PlayerMoveController : MonoBehaviour {
             moveDirection.y = prevY;
 
             //jumps
-            if (grounded)
+            if (grounded || doubleJumpPossible)
             {
-                moveDirection.y = 0f;
+                //moveDirection.y = 0f;
                 if (Input.GetButtonDown("Jump"))
                 {
-                    moveDirection.y = jumpForce;
+                    float mult = 1.0f;
+
+                    if (!grounded)
+                    {
+                        doubleJumpPossible = false;
+                        mult = 0.6f;
+                    }
+                    
+                    moveDirection.y = jumpForce * mult;
                 }
             }
         }
@@ -98,7 +107,10 @@ public class PlayerMoveController : MonoBehaviour {
 	void CheckGround(){
 		int layerMask = 1 << 8;
 		if (Physics.Raycast (transform.position, Vector3.down, (controller.height / 2f) + 0.25f, layerMask, QueryTriggerInteraction.Collide))
-			grounded = true;
+        {
+            grounded = true;
+            doubleJumpPossible = true;
+        }
 		else
 			grounded = false;
 	}

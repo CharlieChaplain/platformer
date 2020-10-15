@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4490832166314038}
+  - component: {fileID: 546059523507062285}
   - component: {fileID: 143691216876732266}
-  - component: {fileID: 114051787756119628}
   - component: {fileID: 114900341734828992}
   - component: {fileID: 114560995429418002}
   - component: {fileID: 114444779376995640}
@@ -36,9 +36,37 @@ Transform:
   - {fileID: 4078236304574366}
   - {fileID: 4542325349010464}
   - {fileID: 7027921966496988142}
+  - {fileID: 53247943609830113}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &546059523507062285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672759857777146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8693ee187d453bb49a2c36c21c0f68bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 143691216876732266}
+  cam: {fileID: 0}
+  groundCheck: {fileID: 53247943609830113}
+  groundCheckRadius: 0.1
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 256
+  anim: {fileID: 1081481881941382804}
+  jumpHeight: 3
+  maxSpeed: 10
+  accel: 0.6
+  gravityMult: 2.4
+  upGravMult: 1.4
+  downGravMult: 1
+  turnSpeed: 0.04
 --- !u!143 &143691216876732266
 CharacterController:
   m_ObjectHideFlags: 0
@@ -50,39 +78,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2
+  m_Height: 2.17
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.0001
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114051787756119628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1672759857777146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d96b7d39a51102429d962d5d4c63bda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 10
-  jumpForce: 25
-  baseGravMult: 0.25
-  upGravMult: 0.3
-  downGravMult: 1
-  turnSpeed: 25
-  controller: {fileID: 143691216876732266}
-  anim: {fileID: 1081481881941382804}
-  waist: {fileID: 3012061069794557167}
-  pivot: {fileID: 0}
-  punkin: {fileID: 0}
-  model: {fileID: 2800787856587066244}
-  grounded: 0
-  moveDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &114900341734828992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,6 +293,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab810bb986b0d1e499d7851ad3f7cc97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &8089113330581161039
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 53247943609830113}
+  m_Layer: 0
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &53247943609830113
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8089113330581161039}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.065, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4490832166314038}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2662336588459938036
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -385,18 +417,6 @@ Transform:
 --- !u!95 &1081481881941382804 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: -6057140222963153312, guid: aeba37a81223acf4e82abfd85f860fed,
-    type: 3}
-  m_PrefabInstance: {fileID: 2662336588459938036}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2800787856587066244 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 156747145930054512, guid: aeba37a81223acf4e82abfd85f860fed,
-    type: 3}
-  m_PrefabInstance: {fileID: 2662336588459938036}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &3012061069794557167 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 954332731344235547, guid: aeba37a81223acf4e82abfd85f860fed,
     type: 3}
   m_PrefabInstance: {fileID: 2662336588459938036}
   m_PrefabAsset: {fileID: 0}
