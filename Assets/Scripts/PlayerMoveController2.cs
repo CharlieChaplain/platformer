@@ -86,6 +86,9 @@ public class PlayerMoveController2 : MonoBehaviour
 
         //animation variable connection
         anim.SetFloat("Speed", speed);
+
+        //set face direction
+        PlayerManager.Instance.faceDir = transform.forward;
     }
 
     void ApplyGravity()

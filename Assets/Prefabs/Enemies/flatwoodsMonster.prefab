@@ -691,13 +691,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
+  m_Height: 4.21
+  m_Radius: 1.27
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 2.14, z: 0}
 --- !u!114 &920601683873457402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -707,14 +707,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 9216422354366492570}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be4b3f9df3058dc4098cd25f27dce583, type: 3}
+  m_Script: {fileID: 11500000, guid: ff35a5ab9cab9e64696c17086e8d8587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  attacks: []
-  currentAttack: {fileID: 0}
-  pursueSpeed: 5
-  turnSpeed: 5
+  maxHealth: 1
+  aggroed: 1
+  speed: 0.5
+  allAttacks: []
+  currentAttack:
+    animTrigger: 
+    damage: 0
+    status: 0
+    statusChance: 0
+  allSounds: []
+  anim: {fileID: 2825469274032287987}
+  target: {fileID: 0}
+  state: 0
+  timeTilHurt: 0
+  hurtThreshold: 0
   isActive: 0
 --- !u!114 &920601683873457403
 MonoBehaviour:
@@ -725,13 +735,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 9216422354366492570}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99af41e6aa01b414da0073c446227118, type: 3}
+  m_Script: {fileID: 11500000, guid: 1397286b6dcdb404a9ffdbe5a1631f16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 1
-  maxHealth: 1
-  attackTimer: 0
-  deathTime: 0
-  anim: {fileID: 2825469274032287987}
-  aggroed: 0
-  enemyState: 0

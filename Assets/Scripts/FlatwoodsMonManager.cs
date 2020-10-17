@@ -48,14 +48,13 @@ public class FlatwoodsMonManager : MonoBehaviour
     {
         for (int i = 0; i < allMonsters.Length; i++)
         {
-            /* reactivate when new flatwoods monster script is made
+            
             if (!allMonsters[i].GetComponent<FlatwoodsMonster>().isActive)
             {
                 SpawnMonster(allMonsters[i]);
                     
                 break;
             }
-            */
         }
     }
 
@@ -79,10 +78,9 @@ public class FlatwoodsMonManager : MonoBehaviour
         }
         //if no ground is found, just spawn in front of player.
         monster.transform.position = pos;
-
-        /* reactivate
+        
         monster.GetComponent<FlatwoodsMonster>().isActive = true;
-        */
+        
         spawned = true;
     }
 
@@ -91,12 +89,12 @@ public class FlatwoodsMonManager : MonoBehaviour
         GameObject toRemove = null;
         foreach(GameObject monster in activeMonsters)
         {
-            /*
+            
             if(monster.GetComponent<FlatwoodsMonster>().isActive == false) //checks if any monsters in the "active" list are inactive
             {
                 toRemove = monster;
             }
-            */
+            
         }
 
         if (toRemove != null)
@@ -127,9 +125,9 @@ public class FlatwoodsMonManager : MonoBehaviour
             monster.transform.position += Vector3.down * 30f * Time.deltaTime;
             yield return null;
         }
-        /* reactvate
+        
         monster.GetComponent<FlatwoodsMonster>().isActive = false;
-        */
+        
         activeMonsters.Remove(monster);
         monster.transform.position = transform.position;
     }

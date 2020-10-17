@@ -66,5 +66,5 @@ public class PlayerManager : MonoBehaviour {
             canLook = true;
         else
             canLook = false;
-	}
+    }
 }
