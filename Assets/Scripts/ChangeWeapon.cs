@@ -24,25 +24,34 @@ public class ChangeWeapon : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-		if (Input.GetButtonDown ("NextWep")) {
-			index++;
-			if (index >= allWeapons.Length)
-				index = 0;
-		} else if (Input.GetButtonDown ("PrevWep")) {
-			index--;
-			if (index < 0)
-				index = allWeapons.Length - 1;
+
+		if (!PauseMenu.isPaused)
+		{
+			if (Input.GetButtonDown("NextWep"))
+			{
+				index++;
+				if (index >= allWeapons.Length)
+					index = 0;
+			}
+			else if (Input.GetButtonDown("PrevWep"))
+			{
+				index--;
+				if (index < 0)
+					index = allWeapons.Length - 1;
+			}
+
+			if (index != lastIndex)
+			{
+				GameObject.Destroy(currentWepCopy);
+				currentWep = allWeapons[index];
+				//PlayerManager.Instance.currentWep = currentWep;
+				currentWepCopy = GameObject.Instantiate(currentWep, hand);
+				PlayerManager.Instance.currentWep = currentWepCopy;
+			}
+
+			lastIndex = index;
 		}
-
-		if (index != lastIndex) {
-			GameObject.Destroy (currentWepCopy);
-			currentWep = allWeapons [index];
-			//PlayerManager.Instance.currentWep = currentWep;
-			currentWepCopy = GameObject.Instantiate (currentWep, hand);
-            PlayerManager.Instance.currentWep = currentWepCopy;
-        }
-
-		lastIndex = index;
 	}
+
+
 }

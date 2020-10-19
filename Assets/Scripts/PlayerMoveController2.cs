@@ -41,18 +41,21 @@ public class PlayerMoveController2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckGrounded();
-
-        if (PlayerManager.Instance.canMove)
+        if (!PauseMenu.isPaused)
         {
-            Move();
-            Jump();
+            CheckGrounded();
+
+            if (PlayerManager.Instance.canMove)
+            {
+                Move();
+                Jump();
+            }
+
+            ApplyGravity();
+
+            if (PlayerManager.Instance.canAttack)
+                CheckAttack();
         }
-
-        ApplyGravity();
-
-        if (PlayerManager.Instance.canAttack)
-            CheckAttack();
     }
 
     void Move()
