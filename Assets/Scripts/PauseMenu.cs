@@ -12,7 +12,10 @@ public class PauseMenu : MonoBehaviour
 
     private bool justPressed; //prevents pause spam
 
-    private enum MenuState { main, inv }
+    public GameObject finger; //the finger cursor
+
+    private enum MenuState { main, inv, stats }
+    private MenuState currentState;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +23,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
         isPaused = false;
         justPressed = false;
+        currentState = MenuState.main;
     }
 
     // Update is called once per frame
@@ -49,6 +53,7 @@ public class PauseMenu : MonoBehaviour
 
     void Pause()
     {
+        currentState = MenuState.main;
         anim.SetTrigger("pause");
         isPaused = true;
         pauseMenu.SetActive(true);
@@ -66,13 +71,36 @@ public class PauseMenu : MonoBehaviour
 
     IEnumerator WaitForUnpause()
     {
-        yield return new WaitForSeconds(.6f);
+        yield return new WaitForSeconds(.3f);
         pauseMenu.SetActive(false);
     }
 
     //handles all interaction with menus
     void MenuNav()
     {
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            if (currentState == MenuState.stats)
+                currentState = 0;
+            else
+                currentState++;
 
+            anim.SetTrigger("nextMenu");
+        }
+        else if (Input.GetKeyDown(KeyCode.A))
+        {
+            if (currentState == 0)
+                currentState = MenuState.stats;
+            else
+                currentState--;
+        }
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            finger.transform.position = finger.transform.position + Vector3.down * 90f;
+        }
+        else if (Input.GetKeyDown(KeyCode.W))
+        {
+            finger.transform.position = finger.transform.position + Vector3.up * 90f;
+        }
     }
 }
