@@ -27,6 +27,10 @@ public class PlayerHurt : MonoBehaviour {
             }
             Poisoned();
         }
+
+        //debug to hurt punkin by 1 each keypress
+        if (Input.GetKeyDown(KeyCode.P))
+            PlayerManager.Instance.currentHealth -= 1f;
 	}
 
     private void OnTriggerEnter(Collider other)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HealthBar : MonoBehaviour {
 
@@ -35,7 +36,7 @@ public class HealthBar : MonoBehaviour {
 			healthLoss.GetComponent<Image> ().enabled = true;
 		}
 
-		currentHealthText.GetComponent<Text> ().text = ((int)PlayerManager.Instance.currentHealth).ToString();
+		currentHealthText.GetComponent<TextMeshProUGUI> ().text = ((int)PlayerManager.Instance.currentHealth).ToString();
 	}
 
 	//waits for a little bit then gradually shows health being lost
