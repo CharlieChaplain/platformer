@@ -14,6 +14,11 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject finger; //the finger cursor
 
+    public Camera sceneCam; //accessed to change the post process value
+    private Material sepiaMat;
+    private float lerpTimer;
+    private float dur = 0.15f;
+
     private enum MenuState { main, inv, stats }
     private MenuState currentState;
 
@@ -24,6 +29,7 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
         justPressed = false;
         currentState = MenuState.main;
+        sepiaMat = sceneCam.GetComponent<ApplyPostProcess>().PPMat;
     }
 
     // Update is called once per frame
@@ -58,6 +64,10 @@ public class PauseMenu : MonoBehaviour
         isPaused = true;
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
+
+        StopCoroutine("LerpPP");
+        lerpTimer = 0f;
+        StartCoroutine(LerpPP(0, 1f, dur));
     }
 
     void Unpause()
@@ -67,12 +77,27 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         StopCoroutine("WaitForUnpause");
         StartCoroutine("WaitForUnpause");
+
+        StopCoroutine("LerpPP");
+        lerpTimer = 0f;
+        StartCoroutine(LerpPP(1f, 0, dur));
     }
 
     IEnumerator WaitForUnpause()
     {
         yield return new WaitForSeconds(.3f);
         pauseMenu.SetActive(false);
+    }
+
+    IEnumerator LerpPP(float start, float end, float duration)
+    {
+        while(lerpTimer < duration)
+        {
+            lerpTimer += Time.unscaledDeltaTime;
+            float amount = Mathf.Lerp(start, end, lerpTimer / duration);
+            sepiaMat.SetFloat("_amount", amount);
+            yield return null;
+        }
     }
 
     //handles all interaction with menus
