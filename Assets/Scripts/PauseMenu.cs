@@ -22,6 +22,9 @@ public class PauseMenu : MonoBehaviour
     private enum MenuState { main, inv, stats }
     private MenuState currentState;
 
+    public AudioClip openMenu;
+    public AudioClip closeMenu;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +33,8 @@ public class PauseMenu : MonoBehaviour
         justPressed = false;
         currentState = MenuState.main;
         sepiaMat = sceneCam.GetComponent<ApplyPostProcess>().PPMat;
+
+        sepiaMat.SetFloat("_amount", 0);
     }
 
     // Update is called once per frame
@@ -61,6 +66,7 @@ public class PauseMenu : MonoBehaviour
     {
         currentState = MenuState.main;
         anim.SetTrigger("pause");
+        SoundManager.Instance.PlaySound(openMenu, PlayerManager.Instance.player.transform.position);
         isPaused = true;
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
@@ -73,6 +79,7 @@ public class PauseMenu : MonoBehaviour
     void Unpause()
     {
         anim.SetTrigger("unpause");
+        SoundManager.Instance.PlaySound(closeMenu, PlayerManager.Instance.player.transform.position);
         isPaused = false;
         Time.timeScale = 1f;
         StopCoroutine("WaitForUnpause");

@@ -59,4 +59,24 @@ public class SoundManager : MonoBehaviour
         playerWeapon.pitch = pitch;
         playerWeapon.Play();
     }
+
+    public void PlaySound(AudioClip clip, Vector3 location)
+    {
+        GameObject obj = new GameObject();
+        obj.transform.position = location;
+        obj.AddComponent<AudioSource>();
+        obj.GetComponent<AudioSource>().clip = clip;
+        obj.GetComponent<AudioSource>().Play();
+        StartCoroutine(DeleteAudioObject(obj, clip.length));
+    }
+
+    IEnumerator DeleteAudioObject(GameObject obj, float time)
+    {
+        while(time > 0)
+        {
+            time -= Time.unscaledDeltaTime;
+            yield return null;
+        }
+        GameObject.Destroy(obj);
+    }
 }

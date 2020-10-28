@@ -24,7 +24,6 @@ public class ItemAnchor : MonoBehaviour
 
     IEnumerator disappear()
     {
-        Debug.Log("hello");
         yield return new WaitForSeconds(2f);
         Destroy(gameObject);
     }
