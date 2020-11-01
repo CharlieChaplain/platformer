@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -8,7 +10,8 @@ public class PauseMenu : MonoBehaviour
 
     public static bool isPaused; //can be accessed by other scripts
 
-    public Animator anim;
+    public Animator menuAnim;
+    public Animator pageAnim;
 
     private bool justPressed; //prevents pause spam
 
@@ -21,6 +24,7 @@ public class PauseMenu : MonoBehaviour
 
     private enum MenuState { main, inv, stats }
     private MenuState currentState;
+    public GameObject[] menus;
 
     public AudioClip openMenu;
     public AudioClip closeMenu;
@@ -65,7 +69,12 @@ public class PauseMenu : MonoBehaviour
     void Pause()
     {
         currentState = MenuState.main;
-        anim.SetTrigger("pause");
+        for(int i = 1; i < menus.Length; i++)
+        {
+            menus[i].SetActive(false);
+        }
+        menus[0].SetActive(true);
+        menuAnim.SetTrigger("pause");
         SoundManager.Instance.PlaySound(openMenu, PlayerManager.Instance.player.transform.position);
         isPaused = true;
         pauseMenu.SetActive(true);
@@ -78,7 +87,7 @@ public class PauseMenu : MonoBehaviour
 
     void Unpause()
     {
-        anim.SetTrigger("unpause");
+        menuAnim.SetTrigger("unpause");
         SoundManager.Instance.PlaySound(closeMenu, PlayerManager.Instance.player.transform.position);
         isPaused = false;
         Time.timeScale = 1f;
@@ -112,19 +121,12 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.D))
         {
-            if (currentState == MenuState.stats)
-                currentState = 0;
-            else
-                currentState++;
+            MenuScroll(1);
 
-            anim.SetTrigger("nextMenu");
         }
         else if (Input.GetKeyDown(KeyCode.A))
         {
-            if (currentState == 0)
-                currentState = MenuState.stats;
-            else
-                currentState--;
+            MenuScroll(-1);
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
@@ -134,5 +136,40 @@ public class PauseMenu : MonoBehaviour
         {
             finger.transform.position = finger.transform.position + Vector3.up * 90f;
         }
+    }
+
+    void MenuScroll(int direction)
+    {
+        menus[(int)currentState].SetActive(false);
+        pageAnim.gameObject.SetActive(true);
+        if(direction > 0)
+            pageAnim.Play("PageTurn");
+        else if(direction < 0)
+            pageAnim.Play("PageTurnReverse");
+        StopCoroutine("WaitForPage");
+        StartCoroutine(WaitForPage(pageAnim.GetCurrentAnimatorClipInfo(0)[0], direction));
+    }
+
+    IEnumerator WaitForPage(AnimatorClipInfo clip, int direction)
+    {
+        yield return new WaitForSecondsRealtime(clip.clip.length);
+        pageAnim.gameObject.SetActive(false);
+
+        if (direction > 0)
+        {
+            if (currentState == MenuState.stats)
+            currentState = 0;
+            else
+                currentState++;
+        }
+        else if(direction < 0)
+        {
+            if (currentState == 0)
+                currentState = MenuState.stats;
+            else
+                currentState--;
+        }
+
+        menus[(int)currentState].SetActive(true);
     }
 }
