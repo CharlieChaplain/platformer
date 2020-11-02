@@ -12,13 +12,25 @@ public class InventoryAnchor : MonoBehaviour
         var item = other.GetComponent<ItemAnchor>();
         if (item)
         {
-            inventory.AddItem(item.item, 1);
+            inventory.AddItem(new Item(item.item), 1);
             other.GetComponent<ItemAnchor>().Collected();
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            inventory.Save();
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            inventory.Load();
         }
     }
 
     private void OnApplicationQuit()
     {
-        inventory.Container.Clear();
+        inventory.Container.Items.Clear();
     }
 }

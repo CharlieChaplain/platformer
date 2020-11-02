@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e3405e1d35bc774cbc1cad84ea98b36, type: 3}
   m_Name: Sarse
   m_EditorClassIdentifier: 
-  stackable: 0
+  ID: 0
+  stackable: 1
   maxStackSize: 0
-  prefab: {fileID: 0}
+  UIDisplay: {fileID: -7153576207775657272, guid: 5ecb10a4b79583a43b9cc06200f0cbc3,
+    type: 3}
   type: 0
   description: Refreshing Sarse brand Sarsaparilla. Restores some health.
   restoreHP: 50

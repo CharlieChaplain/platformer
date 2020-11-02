@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87d060c859dfa104ba7a67ebdef89a43, type: 3}
   m_Name: RingOfTest
   m_EditorClassIdentifier: 
+  ID: 1
   stackable: 0
-  maxStackSize: 0
-  prefab: {fileID: 0}
+  maxStackSize: 1
+  UIDisplay: {fileID: 1610043975286857215, guid: 5ecb10a4b79583a43b9cc06200f0cbc3,
+    type: 3}
   type: 1
   description: This ring is all powerful.
   attackBonus: 10

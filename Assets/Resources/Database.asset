@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47f8858dfab077b4fb0fd55d2bf89573, type: 3}
-  m_Name: PlayerInventory
+  m_Script: {fileID: 11500000, guid: 11e9aeef64ef2bb48bcec91dedb30030, type: 3}
+  m_Name: Database
   m_EditorClassIdentifier: 
-  savePath: /inventory.save
-  database: {fileID: 11400000, guid: 3eade6786e5dd9749893ff8950166389, type: 2}
-  Container:
-    Items: []
+  Items:
+  - {fileID: 11400000, guid: cd43b5aff354e0a4a807d245e44385f0, type: 2}
+  - {fileID: 11400000, guid: 1900b4873e2574047b7a8270714e4b8b, type: 2}
