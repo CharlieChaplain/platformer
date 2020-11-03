@@ -11,51 +11,55 @@ AvatarMask:
   m_Elements:
   - m_Path: 
     m_Weight: 1
-  - m_Path: body
+  - m_Path: Armature
     m_Weight: 0
-  - m_Path: ikHandle1
+  - m_Path: Armature/ctrl_root
     m_Weight: 0
-  - m_Path: ikHandle2
+  - m_Path: Armature/ctrl_root/def_waist
     m_Weight: 0
-  - m_Path: root
+  - m_Path: Armature/ctrl_root/def_waist/def_hip.L
     m_Weight: 0
-  - m_Path: root/hips
+  - m_Path: Armature/ctrl_root/def_waist/def_hip.L/def_knee.L
     m_Weight: 0
-  - m_Path: root/hips/hipL
+  - m_Path: Armature/ctrl_root/def_waist/def_hip.L/def_knee.L/def_foot.L.001
     m_Weight: 0
-  - m_Path: root/hips/hipL/kneeL
+  - m_Path: Armature/ctrl_root/def_waist/def_hip.L/def_knee.L/def_foot.L.001/def_foot.L.002
     m_Weight: 0
-  - m_Path: root/hips/hipL/kneeL/ankleL
+  - m_Path: Armature/ctrl_root/def_waist/def_hip.R
     m_Weight: 0
-  - m_Path: root/hips/hipR
+  - m_Path: Armature/ctrl_root/def_waist/def_hip.R/def_knee.R
     m_Weight: 0
-  - m_Path: root/hips/hipR/kneeR
+  - m_Path: Armature/ctrl_root/def_waist/def_hip.R/def_knee.R/def_foot.R.001
     m_Weight: 0
-  - m_Path: root/hips/hipR/kneeR/ankleR
+  - m_Path: Armature/ctrl_root/def_waist/def_hip.R/def_knee.R/def_foot.R.001/def_foot.R.002
     m_Weight: 0
-  - m_Path: root/hips/hips2
+  - m_Path: Armature/ctrl_root/def_waist/def_hip_pivot
     m_Weight: 0
-  - m_Path: root/hips/hips2/waist
+  - m_Path: Armature/ctrl_root/def_waist/def_hip_pivot/def_torso.001
     m_Weight: 1
-  - m_Path: root/hips/hips2/waist/shoulders
+  - m_Path: Armature/ctrl_root/def_waist/def_hip_pivot/def_torso.001/def_torso.002
     m_Weight: 1
-  - m_Path: root/hips/hips2/waist/shoulders/neck
+  - m_Path: Armature/ctrl_root/def_waist/def_hip_pivot/def_torso.001/def_torso.002/ctrl_clavicle.L
     m_Weight: 1
-  - m_Path: root/hips/hips2/waist/shoulders/neck/hat
+  - m_Path: Armature/ctrl_root/def_waist/def_hip_pivot/def_torso.001/def_torso.002/ctrl_clavicle.L/def_shoulder.L
     m_Weight: 1
-  - m_Path: root/hips/hips2/waist/shoulders/shoulderL
+  - m_Path: Armature/ctrl_root/def_waist/def_hip_pivot/def_torso.001/def_torso.002/ctrl_clavicle.L/def_shoulder.L/def_elbow.L
     m_Weight: 1
-  - m_Path: root/hips/hips2/waist/shoulders/shoulderL/elbowL
+  - m_Path: Armature/ctrl_root/def_waist/def_hip_pivot/def_torso.001/def_torso.002/ctrl_clavicle.L/def_shoulder.L/def_elbow.L/def_hand.L.001
     m_Weight: 1
-  - m_Path: root/hips/hips2/waist/shoulders/shoulderL/elbowL/wristL
+  - m_Path: Armature/ctrl_root/def_waist/def_hip_pivot/def_torso.001/def_torso.002/ctrl_clavicle.L/def_shoulder.L/def_elbow.L/def_hand.L.001/def_hand.L.002
     m_Weight: 1
-  - m_Path: root/hips/hips2/waist/shoulders/shoulderL/elbowL/wristL/handL
+  - m_Path: Armature/ctrl_root/def_waist/def_hip_pivot/def_torso.001/def_torso.002/ctrl_clavicle.R
     m_Weight: 1
-  - m_Path: root/hips/hips2/waist/shoulders/shoulderR
+  - m_Path: Armature/ctrl_root/def_waist/def_hip_pivot/def_torso.001/def_torso.002/ctrl_clavicle.R/def_shoulder.R
     m_Weight: 1
-  - m_Path: root/hips/hips2/waist/shoulders/shoulderR/elbowR
+  - m_Path: Armature/ctrl_root/def_waist/def_hip_pivot/def_torso.001/def_torso.002/ctrl_clavicle.R/def_shoulder.R/def_elbow.R
     m_Weight: 1
-  - m_Path: root/hips/hips2/waist/shoulders/shoulderR/elbowR/wristR
+  - m_Path: Armature/ctrl_root/def_waist/def_hip_pivot/def_torso.001/def_torso.002/ctrl_clavicle.R/def_shoulder.R/def_elbow.R/def_hand.R.001
     m_Weight: 1
-  - m_Path: root/hips/hips2/waist/shoulders/shoulderR/elbowR/wristR/handR
+  - m_Path: Armature/ctrl_root/def_waist/def_hip_pivot/def_torso.001/def_torso.002/ctrl_clavicle.R/def_shoulder.R/def_elbow.R/def_hand.R.001/def_hand.R.002
     m_Weight: 1
+  - m_Path: Armature/ctrl_root/def_waist/def_hip_pivot/def_torso.001/def_torso.002/def_head
+    m_Weight: 1
+  - m_Path: punkin
+    m_Weight: 0

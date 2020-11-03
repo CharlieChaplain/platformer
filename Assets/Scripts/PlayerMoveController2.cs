@@ -135,11 +135,13 @@ public class PlayerMoveController2 : MonoBehaviour
             if (Input.GetButtonDown("Jump"))
             {
                 float mult = 1.0f;
-
-                if (!grounded)
+                if (grounded)
+                    anim.SetTrigger("Jump");
+                else
                 {
                     doubleJumpPossible = false;
                     mult = 0.6f;
+                    anim.SetTrigger("DoubleJump");
                 }
                 velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * Physics.gravity.y * gravityMult) * mult;
             }
