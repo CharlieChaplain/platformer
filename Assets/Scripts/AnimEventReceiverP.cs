@@ -62,4 +62,9 @@ public class AnimEventReceiverP : MonoBehaviour
 
         SoundManager.Instance.PlayWeaponSound(index, pitch);
     }
+
+    void SwapEffigy(int index)
+    {
+        PlayerManager.Instance.SwapEffigy(index);
+    }
 }

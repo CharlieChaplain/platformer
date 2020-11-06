@@ -67,4 +67,18 @@ public class PlayerManager : MonoBehaviour {
         else
             canLook = false;
     }
+
+    public void SwapEffigy(int index)
+    {
+        switch (index){
+            case 0:
+                GetComponent<SwapEffigy>().PunkinToHead();
+                break;
+            case 1:
+                GetComponent<SwapEffigy>().HeadToPunkin();
+                break;
+            default:
+                break;
+        }
+    }
 }
