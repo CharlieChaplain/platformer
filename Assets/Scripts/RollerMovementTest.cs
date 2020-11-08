@@ -5,10 +5,13 @@ using UnityEngine;
 public class RollerMovementTest : MonoBehaviour
 {
     public bool grounded;
+    public bool speedLimit; //whether or not to apply a top speed
     public float jumpForce;//300
     public float speedMult;//30 //what the forces will be multiplied by before being added to rigidbody
     public float slowDown;//0.8
     public float maxSpeed;//4
+
+    public LayerMask groundLayer;
 
     private bool jumping;
 
@@ -51,7 +54,7 @@ public class RollerMovementTest : MonoBehaviour
         rigidbody.AddForce(moveDirection);
 
         //clamps to max speed
-        if (rigidbody.velocity.sqrMagnitude > maxSpeed * maxSpeed)
+        if (speedLimit && rigidbody.velocity.sqrMagnitude > maxSpeed * maxSpeed)
             rigidbody.velocity = Vector3.ClampMagnitude(rigidbody.velocity, maxSpeed);
 
         //slows down rigidbody if no input is being made
@@ -72,10 +75,10 @@ public class RollerMovementTest : MonoBehaviour
 
     void CheckGround() //this check ground only works with the rigidbody and a sphere collider, won't work with character controller and pill collider
     {
-        int layerMask = 1 << 8;
-        if (Physics.Raycast(transform.position, Vector3.down, 0.20f, layerMask, QueryTriggerInteraction.Collide))
+        if (Physics.Raycast(transform.position, Vector3.down, 0.20f, groundLayer, QueryTriggerInteraction.Collide))
         {
             grounded = true;
+            speedLimit = true;
         }  
         else
             grounded = false;
@@ -86,5 +89,6 @@ public class RollerMovementTest : MonoBehaviour
     {
         yield return new WaitForSeconds(.1f);
         jumping = false;
+        speedLimit = true;
     }
 }

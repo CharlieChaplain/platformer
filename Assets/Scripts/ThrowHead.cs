@@ -8,6 +8,7 @@ public class ThrowHead : MonoBehaviour
 
     private Transform waist;
     public GameObject headStartpoint; //rotate this gameobject when aiming, it determines the angle the head is thrown
+    public Vector3 aimDirection;
 
     // Start is called before the first frame update
     void Start()
@@ -30,12 +31,14 @@ public class ThrowHead : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(1))
         {
-            anim.SetTrigger("ThrowHead");
+            anim.SetTrigger("ThrowHead"); //this is what throws the head. An anim event activates in this anim that will do it
         }
     }
 
     void Aim()
     {
-
+        aimDirection = transform.forward;
+        aimDirection.y = .6f;
+        aimDirection.Normalize();
     }
 }

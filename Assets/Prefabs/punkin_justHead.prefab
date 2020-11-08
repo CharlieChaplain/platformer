@@ -123,8 +123,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grounded: 0
-  jumpForce: 300
+  speedLimit: 0
+  jumpForce: 200
   speedMult: 30
   slowDown: 0.8
   maxSpeed: 4
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
   cameraTrans: {fileID: 0}
