@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Weapon
   - HurtBox
+  - HeadMount
+  - HeadLocation
   layers:
   - Default
   - TransparentFX

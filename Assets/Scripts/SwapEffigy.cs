@@ -10,8 +10,7 @@ public class SwapEffigy : MonoBehaviour
 
     public GameObject noheadPunkin; //leaves this behind when punkin throws their head. Used to leap back up onto body
 
-    Vector3 headStartpoint;
-    Vector3 headDir;
+    private GameObject thisNoHeadPunkin;
 
     public float tossPower;
 
@@ -19,8 +18,8 @@ public class SwapEffigy : MonoBehaviour
     {
         //gets copies of initial pos and forward vectors.
         Transform startTrans = punkin.GetComponent<ThrowHead>().headStartpoint.transform;
-        headStartpoint = new Vector3(startTrans.position.x, startTrans.position.y, startTrans.position.z);
-        headDir = punkin.GetComponent<ThrowHead>().aimDirection;
+        Vector3 headStartpoint = new Vector3(startTrans.position.x, startTrans.position.y, startTrans.position.z);
+        Vector3 headDir = punkin.GetComponent<ThrowHead>().aimDirection;
 
         //disables normal punkin
         punkin.SetActive(false);
@@ -29,8 +28,11 @@ public class SwapEffigy : MonoBehaviour
         //enables head punkin
         head.SetActive(true);
         Rigidbody headRB = head.GetComponent<Rigidbody>();
+        RollerMovementTest headRMT = head.GetComponent<RollerMovementTest>();
         headRB.position = headStartpoint;
-        head.GetComponent<RollerMovementTest>().speedLimit = false;
+        headRB.useGravity = true;
+        headRMT.speedLimit = false;
+        headRMT.justThrown = true;
 
         Vector3 facing = new Vector3(headDir.x, 0, headDir.z).normalized;
 
@@ -44,17 +46,37 @@ public class SwapEffigy : MonoBehaviour
         CameraManager.Instance.CurrentCamera.GetComponent<CinemachineFreeLook>().m_XAxis.Value = angle;
 
         //puts down a nohead punkin
-        GameObject.Instantiate(noheadPunkin, punkin.transform.position, punkin.transform.rotation);
+        thisNoHeadPunkin = GameObject.Instantiate(noheadPunkin, punkin.transform.position, punkin.transform.rotation);
     }
 
     public void HeadToPunkin()
     {
-        head.GetComponent<Rigidbody>().isKinematic = true;
-        punkin.transform.position = head.transform.position; //might run into trouble accessing transform of inactive gameobject
-        head.transform.position = Vector3.zero;
+        //gets starting position and current forward
+        Transform startTrans = head.transform;
+        Vector3 startForward = thisNoHeadPunkin.transform.forward;
+
+        //disables head punkin
         head.SetActive(false);
+        Rigidbody headRB = head.GetComponent<Rigidbody>();
+        headRB.isKinematic = true;
+        headRB.useGravity = false;
+        StartCoroutine("WaitThenTPToOrigin", head);
+
+        //enables normal punkin
+        punkin.transform.position = startTrans.position;
+        punkin.transform.forward = startForward;
         punkin.SetActive(true);
 
+        //changes camera
+        Vector3 facing = new Vector3(startForward.x, 0, startForward.z).normalized;
+        CameraManager.ChangeCamera("PunkinCamera");
+        float angle = Mathf.Atan2(facing.x, facing.z) * Mathf.Rad2Deg;
+        CameraManager.Instance.CurrentCamera.GetComponent<CinemachineFreeLook>().m_XAxis.Value = angle;
+
+        //deletes nohead punkin
+        GameObject.Destroy(thisNoHeadPunkin);
+
+        MovementManager.Instance.canMove = true;
     }
 
     IEnumerator WaitThenTPToOrigin(GameObject objToTP)

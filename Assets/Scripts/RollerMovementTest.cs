@@ -6,6 +6,7 @@ public class RollerMovementTest : MonoBehaviour
 {
     public bool grounded;
     public bool speedLimit; //whether or not to apply a top speed
+    public bool justThrown; //whether punkin was just thrown or not
     public float jumpForce;//300
     public float speedMult;//30 //what the forces will be multiplied by before being added to rigidbody
     public float slowDown;//0.8
@@ -34,7 +35,8 @@ public class RollerMovementTest : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
+        if(MovementManager.Instance.canMove)
+            Move();
     }
 
     void Move()
@@ -78,7 +80,14 @@ public class RollerMovementTest : MonoBehaviour
         if (Physics.Raycast(transform.position, Vector3.down, 0.20f, groundLayer, QueryTriggerInteraction.Collide))
         {
             grounded = true;
-            speedLimit = true;
+
+            //first time hitting the ground after thrown
+            if (justThrown)
+            {
+                justThrown = false;
+                speedLimit = true;
+                MovementManager.Instance.canMove = true;
+            }
         }  
         else
             grounded = false;

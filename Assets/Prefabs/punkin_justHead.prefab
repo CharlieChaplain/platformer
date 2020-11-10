@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3431262589646154779}
   - component: {fileID: 3431262589646154778}
   - component: {fileID: 3431262589646154782}
+  - component: {fileID: -4945678607913728723}
   m_Layer: 0
   m_Name: punkin_justHead
   m_TagString: Untagged
@@ -132,3 +133,15 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   cameraTrans: {fileID: 0}
+--- !u!114 &-4945678607913728723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6683243111179633643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac46af4220d3f934892c179f8d57c5a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
