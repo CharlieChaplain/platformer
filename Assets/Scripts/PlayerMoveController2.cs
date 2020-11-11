@@ -45,11 +45,16 @@ public class PlayerMoveController2 : MonoBehaviour
         {
             CheckGrounded();
 
-            if (PlayerManager.Instance.canMove)
+            if (MovementManager.Instance.canMove)
             {
                 Move();
                 Jump();
             }
+            else
+                speed = 0;
+
+            //animation variable connection
+            anim.SetFloat("Speed", speed);
 
             ApplyGravity();
 
@@ -82,13 +87,10 @@ public class PlayerMoveController2 : MonoBehaviour
             speed = Mathf.Clamp(speed, 0, maxSpeed);
         }
 
-
-
         Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
         controller.Move(moveDir * speed * Time.deltaTime);
 
-        //animation variable connection
-        anim.SetFloat("Speed", speed);
+        
 
         //set face direction
         PlayerManager.Instance.faceDir = transform.forward;

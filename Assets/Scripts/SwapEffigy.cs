@@ -24,6 +24,7 @@ public class SwapEffigy : MonoBehaviour
         //disables normal punkin
         punkin.SetActive(false);
         StartCoroutine("WaitThenTPToOrigin", punkin);
+        punkin.GetComponent<RotateHips>().rotate = false;
 
         //enables head punkin
         head.SetActive(true);
@@ -43,7 +44,7 @@ public class SwapEffigy : MonoBehaviour
         //changes camera
         CameraManager.ChangeCamera("JustHeadCamera");
         float angle = Mathf.Atan2(facing.x, facing.z) * Mathf.Rad2Deg;
-        CameraManager.Instance.CurrentCamera.GetComponent<CinemachineFreeLook>().m_XAxis.Value = angle;
+        CameraManager.Instance.ChangeCurrentAngle(angle, true);
 
         //puts down a nohead punkin
         thisNoHeadPunkin = GameObject.Instantiate(noheadPunkin, punkin.transform.position, punkin.transform.rotation);

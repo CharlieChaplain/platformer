@@ -23,7 +23,8 @@ public class CameraManager : MonoBehaviour
     public List<CinemachineVirtualCameraBase> cameraObjects;
     Dictionary<string, CinemachineVirtualCameraBase> allCamerasInScene;
 
-    public CinemachineVirtualCameraBase CurrentCamera;
+    public CinemachineVirtualCameraBase CurrentCamera; //the current cinemachine camera
+    public Camera SceneCamera; //the actual camera in the world. Use this to find look direction and stuff
 
     // Start is called before the first frame update
     void Start()
@@ -44,5 +45,19 @@ public class CameraManager : MonoBehaviour
         CameraManager.Instance.CurrentCamera.Priority = 5; //arbitrarily 5 and 10. The old cam just needs lower priority and the new cam needs higher
         CameraManager.Instance.allCamerasInScene[newCamName].Priority = 10;
         CameraManager.Instance.CurrentCamera = CameraManager.Instance.allCamerasInScene[newCamName];
+    }
+
+    public void ChangeCurrentAngle(float xOrY, bool XTrueYFalse) //bool is true if input float is x, false if input float is y
+    {
+        if(XTrueYFalse)
+            CurrentCamera.GetComponent<CinemachineFreeLook>().m_XAxis.Value = xOrY;
+        else
+            CurrentCamera.GetComponent<CinemachineFreeLook>().m_YAxis.Value = xOrY;
+    }
+
+    public void ChangeCurrentAngle(float x, float y) //overload to set both
+    {
+        CurrentCamera.GetComponent<CinemachineFreeLook>().m_XAxis.Value = x;
+        CurrentCamera.GetComponent<CinemachineFreeLook>().m_YAxis.Value = y;
     }
 }
