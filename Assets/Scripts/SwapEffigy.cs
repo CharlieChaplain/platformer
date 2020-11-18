@@ -41,6 +41,10 @@ public class SwapEffigy : MonoBehaviour
         headRB.isKinematic = false;
         headRB.AddForce(headDir * tossPower);
 
+        //changes reference in playermanager
+        PlayerManager.Instance.currentType = PlayerManager.PunkinType.headPunkin;
+        PlayerManager.Instance.player = head;
+
         //changes camera
         CameraManager.ChangeCamera("JustHeadCamera");
         float angle = Mathf.Atan2(facing.x, facing.z) * Mathf.Rad2Deg;
@@ -67,6 +71,10 @@ public class SwapEffigy : MonoBehaviour
         punkin.transform.position = startTrans.position;
         punkin.transform.forward = startForward;
         punkin.SetActive(true);
+
+        //changes reference in playermanager
+        PlayerManager.Instance.currentType = PlayerManager.PunkinType.basePunkin;
+        PlayerManager.Instance.player = punkin;
 
         //changes camera
         Vector3 facing = new Vector3(startForward.x, 0, startForward.z).normalized;

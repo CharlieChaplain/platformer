@@ -12,8 +12,20 @@ public class AnimEventReceiverP : MonoBehaviour
     {
         //grabs the hitbox and trail that are manually assigned to the current weapon's prefab via the inspector
         //WeaponInfo is a component of the current weapon. Current Weapon is a field in Player Manager.
-        hurtbox = PlayerManager.Instance.currentWep.GetComponent<WeaponInfo>().hurtbox;
-        trail = PlayerManager.Instance.currentWep.GetComponent<WeaponInfo>().trail;
+        //Will determine if base punkin (and therefore all weapons) or a different effigy should be accessed.
+        switch (PlayerManager.Instance.currentType)
+        {
+            case PlayerManager.PunkinType.basePunkin:
+                hurtbox = PlayerManager.Instance.currentWep.GetComponent<WeaponInfo>().hurtbox;
+                trail = PlayerManager.Instance.currentWep.GetComponent<WeaponInfo>().trail;
+                break;
+            case PlayerManager.PunkinType.bigPunkin:
+                hurtbox = PlayerManager.Instance.bigPunkWep.GetComponent<WeaponInfo>().hurtbox;
+                trail = PlayerManager.Instance.bigPunkWep.GetComponent<WeaponInfo>().trail;
+                break;
+            default:
+                break;
+        }
 
         if (flag == 0)
         {
@@ -66,5 +78,13 @@ public class AnimEventReceiverP : MonoBehaviour
     void SwapEffigy(int index)
     {
         PlayerManager.Instance.SwapEffigy(index);
+    }
+
+    void ToggleMove(int flag)
+    {
+        if (flag == 0)
+            MovementManager.Instance.canMove = false;
+        else if (flag == 1)
+            MovementManager.Instance.canMove = true;
     }
 }

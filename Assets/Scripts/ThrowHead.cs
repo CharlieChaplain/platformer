@@ -11,8 +11,6 @@ public class ThrowHead : MonoBehaviour
     public GameObject cameraAnchor; //the third person over the shoulder anchor
     public Vector3 aimDirection;
 
-    private bool aiming;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +20,6 @@ public class ThrowHead : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        aiming = false;
         if (Input.GetMouseButtonDown(1))
         {
             anim.SetTrigger("StartHeadAim");

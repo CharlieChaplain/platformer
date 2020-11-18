@@ -153,18 +153,25 @@ public class PlayerMoveController2 : MonoBehaviour
     //checks if player attacks. If so, it sends the current weapon type and a trigger to the animator
     void CheckAttack()
     {
-        currentWep = PlayerManager.Instance.currentWep;
+        bool isBasePunkin = PlayerManager.Instance.currentType == PlayerManager.PunkinType.basePunkin;
+        if (isBasePunkin)
+        {
+            currentWep = PlayerManager.Instance.currentWep;
 
-        //sends over the handedness of the current weapon to the animator
-        twoHand = currentWep.GetComponent<WeaponInfo>().twoHand;
-        anim.SetBool("TwoHand", twoHand);
+            //sends over the handedness of the current weapon to the animator
+            twoHand = currentWep.GetComponent<WeaponInfo>().twoHand;
+            anim.SetBool("TwoHand", twoHand);
+        }
 
         //triggers the attack animation if player can attack (not currently attacking and also possibly some other conditions)
         if (Input.GetAxis("Attack") > 0 && PlayerManager.Instance.canAttack)
         {
-            //sends over the weapon attack state stored in the weaponinfo of the prefab to the animator
-            stateNum = currentWep.GetComponent<WeaponInfo>().attackState;
-            anim.SetInteger("AttackState", stateNum);
+            if (isBasePunkin)
+            {
+                //sends over the weapon attack state stored in the weaponinfo of the prefab to the animator
+                stateNum = currentWep.GetComponent<WeaponInfo>().attackState;
+                anim.SetInteger("AttackState", stateNum);
+            }
 
             //sends over trigger
             anim.SetTrigger("AttackTrigger");

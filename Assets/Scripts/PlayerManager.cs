@@ -8,7 +8,9 @@ public class PlayerManager : MonoBehaviour {
     public GameObject player;
 	public float currentHealth;
 	public float maxHealth;
-	public GameObject currentWep;
+	public GameObject currentWep; //used with base punkin to determine which wep they're using
+    public GameObject bigPunkWep; //a gameobject that holds the weapon info for big punk's fist
+    public GameObject dollyPunkWep; //a gameobject that holds the weapon info for doll punk's needle
     public GameObject currentTarget; //the current target of the player for ranged attacks
     public bool canMove; //determines if the player can move around
     public bool canLook; //determines if the player can look around for purposes of ranged weapons (rotates at hip)
@@ -31,7 +33,16 @@ public class PlayerManager : MonoBehaviour {
         poisoned
     };
 
+    public enum PunkinType
+    {
+        basePunkin,
+        headPunkin,
+        bigPunkin,
+        dollyPunkin
+    };
+
     public StatusEffect currentStatus = StatusEffect.none;
+    public PunkinType currentType;
 
     private void Awake(){
 		if (Instance == null) {

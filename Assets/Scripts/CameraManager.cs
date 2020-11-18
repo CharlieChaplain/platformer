@@ -21,7 +21,7 @@ public class CameraManager : MonoBehaviour
 
     public List<string> cameraNames;
     public List<CinemachineVirtualCameraBase> cameraObjects;
-    Dictionary<string, CinemachineVirtualCameraBase> allCamerasInScene;
+    public Dictionary<string, CinemachineVirtualCameraBase> allCamerasInScene;
 
     public CinemachineVirtualCameraBase CurrentCamera; //the current cinemachine camera
     public Camera SceneCamera; //the actual camera in the world. Use this to find look direction and stuff
