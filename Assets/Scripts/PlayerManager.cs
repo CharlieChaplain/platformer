@@ -12,7 +12,7 @@ public class PlayerManager : MonoBehaviour {
     public GameObject bigPunkWep; //a gameobject that holds the weapon info for big punk's fist
     public GameObject dollyPunkWep; //a gameobject that holds the weapon info for doll punk's needle
     public GameObject currentTarget; //the current target of the player for ranged attacks
-    public bool canMove; //determines if the player can move around
+    //public bool canMove; //determines if the player can move around
     public bool canLook; //determines if the player can look around for purposes of ranged weapons (rotates at hip)
     public Vector3 faceDir; //the direction the player is facing (not looking via camera)
 
@@ -52,7 +52,7 @@ public class PlayerManager : MonoBehaviour {
 			Destroy (gameObject);
 		}
         canLook = false;
-        canMove = true;
+        //canMove = true;
         canAttack = true;
         //attacking = false;
     }
@@ -79,17 +79,21 @@ public class PlayerManager : MonoBehaviour {
             canLook = false;
     }
 
-    public void SwapEffigy(int index)
+    public void SwapEffigy(int index, GameObject effigyToDelete)
     {
         switch (index){
             case 0:
                 GetComponent<SwapEffigy>().PunkinToHead();
                 break;
             case 1:
-                GetComponent<SwapEffigy>().HeadToPunkin();
+                GetComponent<SwapEffigy>().HeadToPunkin(effigyToDelete);
                 break;
             default:
                 break;
         }
+    }
+    public void SpawnWeapon()
+    {
+        GetComponent<ChangeWeapon>().SpawnWeapon();
     }
 }

@@ -14,27 +14,27 @@ public class ReattachHead : MonoBehaviour
         if (other.tag == "HeadMount" && !reattaching)
         {
             reattaching = true;
-            Vector3 target = other.GetComponent<HeadAnchor>().headLocation.transform.position;
-            target.y += .3f; //needs to add some to Y because Unity isn't working properly
-            Reattach(target);
-            
+            Reattach(other.gameObject);
         }
     }
 
-    public void Reattach(Vector3 target)
+    public void Reattach(GameObject target)
     {
         timer = leapTime = .8f;
         StartCoroutine(LeapToTarget(transform.position, target));
     }
 
-    IEnumerator LeapToTarget(Vector3 start, Vector3 target)
+    IEnumerator LeapToTarget(Vector3 start, GameObject target)
     {
+        Vector3 targetPos = target.GetComponent<HeadAnchor>().headLocation.transform.position;
+        targetPos.y += .3f; //needs to add some to Y because Unity isn't working properly
+
         MovementManager.Instance.canMove = false;
         GetComponent<Rigidbody>().useGravity = false;
         while (timer > 0)
         {
             float currentTime = (leapTime - timer);
-            Vector3 currentPos = Vector3.Lerp(start, target, currentTime / leapTime);
+            Vector3 currentPos = Vector3.Lerp(start, targetPos, currentTime / leapTime);
             float addition = -((1.5f * currentTime - (leapTime / 2))*(1.5f * currentTime - (leapTime / 2))) + (leapTime / 2);
             currentPos.y += addition;
             GetComponent<Rigidbody>().position = currentPos;
@@ -44,6 +44,6 @@ public class ReattachHead : MonoBehaviour
             yield return null;
         }
         reattaching = false;
-        PlayerManager.Instance.SwapEffigy(1);
+        PlayerManager.Instance.SwapEffigy(1, target);
     }
 }

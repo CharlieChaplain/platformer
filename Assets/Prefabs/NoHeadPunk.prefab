@@ -325,6 +325,7 @@ GameObject:
   - component: {fileID: 2664792922949160303}
   - component: {fileID: 4563205079303588846}
   - component: {fileID: 7858110392965544974}
+  - component: {fileID: 8647187903629973110}
   m_Layer: 0
   m_Name: NoHeadPunk
   m_TagString: HeadMount
@@ -375,6 +376,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   headLocation: {fileID: 710671783578928863}
+  effigyType: 0
+--- !u!136 &8647187903629973110
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317609885781566003}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.69
+  m_Height: 1.63
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.79, z: 0}
 --- !u!1 &1991052265995753343
 GameObject:
   m_ObjectHideFlags: 0

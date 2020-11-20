@@ -75,9 +75,10 @@ public class AnimEventReceiverP : MonoBehaviour
         SoundManager.Instance.PlayWeaponSound(index, pitch);
     }
 
-    void SwapEffigy(int index)
+    void SwapEffigy(int index) //this is only used when the head attaches to an effigy so it can delete the headless effigy object.
     {
-        PlayerManager.Instance.SwapEffigy(index);
+        GameObject empty = new GameObject();
+        PlayerManager.Instance.SwapEffigy(index, empty);
     }
 
     void ToggleMove(int flag)

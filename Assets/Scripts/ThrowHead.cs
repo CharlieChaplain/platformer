@@ -20,7 +20,7 @@ public class ThrowHead : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (MovementManager.Instance.canMove && Input.GetMouseButtonDown(1))
         {
             anim.SetTrigger("StartHeadAim");
             PlayerManager.Instance.currentWep.SetActive(false);

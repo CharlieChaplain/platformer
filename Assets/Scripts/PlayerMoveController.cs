@@ -51,7 +51,7 @@ public class PlayerMoveController : MonoBehaviour {
 		CheckGround ();
 
 		float prevY = moveDirection.y;
-        if (PlayerManager.Instance.canMove)
+        if (MovementManager.Instance.canMove)
         {
             moveDirection = (transform.forward * Input.GetAxis("Vertical")) + (transform.right * Input.GetAxis("Horizontal"));
 
@@ -161,7 +161,7 @@ public class PlayerMoveController : MonoBehaviour {
         Vector3 directionXZ = new Vector3(direction.x, 0.0f, direction.z);
         transform.forward = -directionXZ;
         moveDirection = direction;
-        PlayerManager.Instance.canMove = false;
+        MovementManager.Instance.canMove = false;
     }
 
     void checkKnockbackTimer()
@@ -169,7 +169,7 @@ public class PlayerMoveController : MonoBehaviour {
         if(hurtTimer > 0)
             hurtTimer -= Time.deltaTime;
         if (hurtTimer <= 0)
-            PlayerManager.Instance.canMove = true;
+            MovementManager.Instance.canMove = true;
     }
 
     //will stop the player in their tracks. Combine this with PlayerManager.Instance.canMove = false to fully stop player

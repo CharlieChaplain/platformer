@@ -45,13 +45,16 @@ public class ChangeWeapon : MonoBehaviour {
 				GameObject.Destroy(currentWepCopy);
 				currentWep = allWeapons[index];
 				//PlayerManager.Instance.currentWep = currentWep;
-				currentWepCopy = GameObject.Instantiate(currentWep, hand);
-				PlayerManager.Instance.currentWep = currentWepCopy;
+				SpawnWeapon();
 			}
 
 			lastIndex = index;
 		}
 	}
 
-
+	public void SpawnWeapon()
+    {
+		currentWepCopy = GameObject.Instantiate(currentWep, hand);
+		PlayerManager.Instance.currentWep = currentWepCopy;
+	}
 }

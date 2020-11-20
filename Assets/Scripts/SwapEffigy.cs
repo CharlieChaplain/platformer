@@ -23,7 +23,7 @@ public class SwapEffigy : MonoBehaviour
 
         //disables normal punkin
         punkin.SetActive(false);
-        StartCoroutine("WaitThenTPToOrigin", punkin);
+        StartCoroutine(WaitThenTPToOrigin(punkin, 1.2f));
         punkin.GetComponent<RotateHips>().rotate = false;
 
         //enables head punkin
@@ -54,23 +54,26 @@ public class SwapEffigy : MonoBehaviour
         thisNoHeadPunkin = GameObject.Instantiate(noheadPunkin, punkin.transform.position, punkin.transform.rotation);
     }
 
-    public void HeadToPunkin()
+    public void HeadToPunkin(GameObject effigyToDelete)
     {
         //gets starting position and current forward
-        Transform startTrans = head.transform;
-        Vector3 startForward = thisNoHeadPunkin.transform.forward;
+        Vector3 startPos = new Vector3(head.transform.position.x, head.transform.position.y, head.transform.position.z);
+        Vector3 startForward = effigyToDelete.transform.forward;
 
         //disables head punkin
         head.SetActive(false);
         Rigidbody headRB = head.GetComponent<Rigidbody>();
         headRB.isKinematic = true;
         headRB.useGravity = false;
-        StartCoroutine("WaitThenTPToOrigin", head);
+        StartCoroutine(WaitThenTPToOrigin(head, 0.8f));
 
         //enables normal punkin
-        punkin.transform.position = startTrans.position;
+        punkin.transform.position = startPos;
         punkin.transform.forward = startForward;
         punkin.SetActive(true);
+        punkin.GetComponentInChildren<Animator>().Play("Base Layer.Punk_Standup_E");
+        PlayerManager.Instance.SpawnWeapon();
+        PlayerManager.Instance.canAttack = true;
 
         //changes reference in playermanager
         PlayerManager.Instance.currentType = PlayerManager.PunkinType.basePunkin;
@@ -83,14 +86,27 @@ public class SwapEffigy : MonoBehaviour
         CameraManager.Instance.CurrentCamera.GetComponent<CinemachineFreeLook>().m_XAxis.Value = angle;
 
         //deletes nohead punkin
-        GameObject.Destroy(thisNoHeadPunkin);
+        GameObject.Destroy(effigyToDelete);
 
         MovementManager.Instance.canMove = true;
     }
 
-    IEnumerator WaitThenTPToOrigin(GameObject objToTP)
+    public void BigPunkToHead()
     {
-        yield return new WaitForSeconds(1.2f);
+        //gets copies of initial pos and forward vectors.
+        Transform startTrans = punkin.GetComponent<ThrowHead>().headStartpoint.transform;
+        Vector3 headStartpoint = new Vector3(startTrans.position.x, startTrans.position.y, startTrans.position.z);
+        Vector3 headDir = punkin.GetComponent<ThrowHead>().aimDirection;
+
+        //disables normal punkin
+        punkin.SetActive(false);
+        StartCoroutine("WaitThenTPToOrigin", punkin);
+        punkin.GetComponent<RotateHips>().rotate = false;
+    }
+
+    IEnumerator WaitThenTPToOrigin(GameObject objToTP, float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
         objToTP.transform.position = Vector3.zero;
     }
 }
