@@ -10,8 +10,8 @@ public class ShadowMove : MonoBehaviour {
 	void Start () {
 	}
 	
-	// Update is called once per frame
-	void Update () {
+
+	void LateUpdate () {
 		Vector3 posXZ = target.position;
 		RaycastHit hit;
 		int layerMask = 1 << 8;

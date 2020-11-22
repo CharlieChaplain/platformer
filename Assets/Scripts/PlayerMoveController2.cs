@@ -132,7 +132,7 @@ public class PlayerMoveController2 : MonoBehaviour
 
     void Jump()
     {
-        if (grounded || (doubleJumpPossible && PlayerManager.Instance.currentType == PlayerManager.PunkinType.basePunkin))
+        if (grounded || (doubleJumpPossible && PlayerManager.Instance.currentType != PlayerManager.PunkinType.bigPunkin))
         {
             if (Input.GetButtonDown("Jump"))
             {

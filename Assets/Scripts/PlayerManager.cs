@@ -25,7 +25,6 @@ public class PlayerManager : MonoBehaviour {
 
     //used for attacks
     public bool canAttack;
-    //public bool attacking;        Do I need this?
 
     public enum StatusEffect
     {
@@ -87,6 +86,18 @@ public class PlayerManager : MonoBehaviour {
                 break;
             case 1:
                 GetComponent<SwapEffigy>().HeadToPunkin(effigyToDelete);
+                break;
+            case 2:
+                GetComponent<SwapEffigy>().HeadToBigPunk(effigyToDelete);
+                break;
+            case 3:
+                GetComponent<SwapEffigy>().HeadToDollPunk(effigyToDelete);
+                break;
+            case 4:
+                GetComponent<SwapEffigy>().BigPunkToHead();
+                break;
+            case 5:
+                GetComponent<SwapEffigy>().DollPunkToHead();
                 break;
             default:
                 break;

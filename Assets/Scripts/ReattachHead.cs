@@ -11,20 +11,20 @@ public class ReattachHead : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "HeadMount" && !reattaching)
+        if (other.tag == "HeadMount" && !reattaching && other.GetComponent<HeadAnchor>().canAcceptHead)
         {
             reattaching = true;
-            Reattach(other.gameObject);
+            Reattach(other.gameObject, other.gameObject.GetComponent<HeadAnchor>().effigyType);
         }
     }
 
-    public void Reattach(GameObject target)
+    public void Reattach(GameObject target, int type)
     {
         timer = leapTime = .8f;
-        StartCoroutine(LeapToTarget(transform.position, target));
+        StartCoroutine(LeapToTarget(transform.position, target, type));
     }
 
-    IEnumerator LeapToTarget(Vector3 start, GameObject target)
+    IEnumerator LeapToTarget(Vector3 start, GameObject target, int type)
     {
         Vector3 targetPos = target.GetComponent<HeadAnchor>().headLocation.transform.position;
         targetPos.y += .3f; //needs to add some to Y because Unity isn't working properly
@@ -44,6 +44,6 @@ public class ReattachHead : MonoBehaviour
             yield return null;
         }
         reattaching = false;
-        PlayerManager.Instance.SwapEffigy(1, target);
+        PlayerManager.Instance.SwapEffigy(type, target);
     }
 }

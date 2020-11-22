@@ -11,12 +11,12 @@ public class Attack : MonoBehaviour
     public int numCoroutines = 0;
 
     private bool twoHand;
-    private bool coroutFired = false;
-    private bool timeSet = false;
-    private bool notShot = false;
+    //private bool coroutFired = false;
+    //private bool timeSet = false;
+    //private bool notShot = false;
     private int stateNum;
     private AnimatorStateInfo animInfo;
-    private AnimatorClipInfo[] animClip;
+    //private AnimatorClipInfo[] animClip;
 
     private enum AttackState
     {
@@ -27,8 +27,8 @@ public class Attack : MonoBehaviour
     };
 
     private AttackState state = AttackState.none;
-    private float attackTime = 0;
-    private float timer = 0;
+    //private float attackTime = 0;
+    //private float timer = 0;
 
     // Use this for initialization
     void Start()
@@ -151,7 +151,7 @@ public class Attack : MonoBehaviour
         }
         */
     }
-
+    /*
     private IEnumerator attack()
     {
         numCoroutines++;
@@ -187,4 +187,5 @@ public class Attack : MonoBehaviour
         coroutFired = false;
         numCoroutines--;
     }
+    */
 }

@@ -23,6 +23,10 @@ public class AnimEventReceiverP : MonoBehaviour
                 hurtbox = PlayerManager.Instance.bigPunkWep.GetComponent<WeaponInfo>().hurtbox;
                 trail = PlayerManager.Instance.bigPunkWep.GetComponent<WeaponInfo>().trail;
                 break;
+            case PlayerManager.PunkinType.dollyPunkin:
+                hurtbox = PlayerManager.Instance.dollyPunkWep.GetComponent<WeaponInfo>().hurtbox;
+                trail = PlayerManager.Instance.dollyPunkWep.GetComponent<WeaponInfo>().trail;
+                break;
             default:
                 break;
         }
@@ -30,6 +34,7 @@ public class AnimEventReceiverP : MonoBehaviour
         if (flag == 0)
         {
             hurtbox.enabled = false;
+            trail.Clear();
             trail.enabled = false;
         }
         else if (flag == 1)
@@ -75,7 +80,7 @@ public class AnimEventReceiverP : MonoBehaviour
         SoundManager.Instance.PlayWeaponSound(index, pitch);
     }
 
-    void SwapEffigy(int index) //this is only used when the head attaches to an effigy so it can delete the headless effigy object.
+    void SwapEffigy(int index)
     {
         GameObject empty = new GameObject();
         PlayerManager.Instance.SwapEffigy(index, empty);
