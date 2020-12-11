@@ -29,6 +29,8 @@ public class PauseMenu : MonoBehaviour
     public AudioClip openMenu;
     public AudioClip closeMenu;
 
+    private DisplayInventory invDisplay;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +41,8 @@ public class PauseMenu : MonoBehaviour
         sepiaMat = sceneCam.GetComponent<ApplyPostProcess>().PPMat;
 
         sepiaMat.SetFloat("_amount", 0);
+
+        invDisplay = pauseMenu.GetComponentInChildren<DisplayInventory>();
     }
 
     // Update is called once per frame
@@ -136,6 +140,22 @@ public class PauseMenu : MonoBehaviour
         {
             finger.transform.position = finger.transform.position + Vector3.up * 90f;
         }
+
+        //does stuff depending on which menu is active
+        switch (currentState)
+        {
+            case MenuState.main:
+                MainMenu();
+                break;
+            case MenuState.inv:
+                InvMenu();
+                break;
+            case MenuState.stats:
+                StatsMenu();
+                break;
+            default:
+                break;
+        }
     }
 
     void MenuScroll(int direction)
@@ -171,5 +191,22 @@ public class PauseMenu : MonoBehaviour
         }
 
         menus[(int)currentState].SetActive(true);
+    }
+
+    void MainMenu()
+    {
+
+    }
+    void InvMenu()
+    {
+        //REPLACE KEYS WITH CONFIGURABLE VARIABLES AT SOME POINT
+        if (Input.GetKeyDown(KeyCode.RightBracket))
+            invDisplay.ChangeInventories(1);
+        else if (Input.GetKeyDown(KeyCode.LeftBracket))
+            invDisplay.ChangeInventories(-1);
+    }
+    void StatsMenu()
+    {
+
     }
 }

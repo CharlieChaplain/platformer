@@ -9,6 +9,7 @@ using UnityEditor;
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]
 public class Inventory : ScriptableObject
 {
+    public string name; //the name that gets displayed in menus and such
     public string savePath;
     public ItemDatabase database;
     public Inv Container;

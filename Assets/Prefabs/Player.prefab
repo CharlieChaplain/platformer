@@ -176,7 +176,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f184d32e7e30060459fb6f6277970302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 11400000, guid: 175f3f392749a5b44b851ccafff44b9e, type: 2}
+  inventories:
+  - {fileID: 11400000, guid: e002acdb03f96e54fb5e2546d96a853c, type: 2}
+  - {fileID: 11400000, guid: 886e5f75fefbf264db07e66e2ab4da35, type: 2}
 --- !u!114 &8480248457032461099
 MonoBehaviour:
   m_ObjectHideFlags: 0

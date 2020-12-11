@@ -6,6 +6,7 @@ public class PlayerManager : MonoBehaviour {
 
 	public static PlayerManager Instance { get; private set; }
     public GameObject player;
+    public InventoryAnchor inventoryAnchor; //the player's inventory anchor. Holds all player inventories
 	public float currentHealth;
 	public float maxHealth;
 	public GameObject currentWep; //used with base punkin to determine which wep they're using
@@ -63,6 +64,7 @@ public class PlayerManager : MonoBehaviour {
         playerTex = player.GetComponentInChildren<SkinnedMeshRenderer>().materials[0];
         playerTexTrans = player.GetComponentInChildren<SkinnedMeshRenderer>().materials[1];
         poisonBubbles = GameObject.Find("PlayerPoisonParticles").GetComponent<ParticleSystem>();
+        inventoryAnchor = player.GetComponent<InventoryAnchor>();
     }
 	
 	// Update is called once per frame
